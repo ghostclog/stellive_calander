@@ -1,0 +1,19 @@
+#hina{
+    background-color:#f2dcbf;
+    color: white;
+    font-weight: bold;
+    cursor:auto;
+    transform: scale(1.2);
+}
+
+#hina:hover{
+    transform: scale(1.2);
+}
+
+#hina img{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    display: inline;
+}

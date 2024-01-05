@@ -1,0 +1,73 @@
+#data-area{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+
+#in-data-area{
+    position: relative;
+    left: 20px;
+    top:50px;
+    height: 100%;
+    width: 95%;
+}
+
+#data-day{
+    position: relative;
+    font-weight: bold;
+    font-size: 22px;
+    left: 5px;
+    top: -10px;
+}
+
+.data-header{
+    position: relative;
+    top: 16px;
+    left: 5px;
+    font-weight: bold;
+}
+
+.data-tab{
+    background-color: rgb(243, 243, 243);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#in-data-area .move-tab{
+    background-color: rgb(243, 243, 243);
+    margin-top: 35px;
+    padding: 10px;
+    border-radius: 25px;
+    width: 150px;
+}
+
+#in-data-area .move-tab:hover{
+    background-color: rgb(220, 220, 220);
+    cursor: pointer;
+}
+
+#move-btn{
+    color: #000;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+    left: 5px;
+}
+
+#how-to-use{
+    position: relative;
+    left: 30px;
+    top: 40px;
+}
+
+#how-to-use #main{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+#how-to-use .sub{
+    margin-bottom: 10px;
+}

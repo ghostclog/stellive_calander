@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="for-margin">
+</div>
+<div id="contents">
+    <div id="contents-area">
+        <!-- 
+        캘린더
+
+        https://chpofo.tistory.com/67
+        위의 사이트 참고 및 수정하여 제작함
+        -->
+
+        <div class="wrapper">
+            <header>
+                <div class="nav">
+                  <button class="material-icons"> &lt; </button>
+                  <p class="current-date">September 2022</p>
+                  <button class="material-icons"> &gt; </span>
+                </div>
+            </header>
+            <div class="calendar">
+                <ul class="weeks">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="days">
+                    <li class="inactive">27</li>
+                    <li class="inactive">28</li>
+                    <li class="inactive">29</li>
+                    <li class="inactive">30</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                    <li>21</li>
+                    <li>22</li>
+                    <li>23</li>
+                    <li>24</li>
+                    <li>25</li>
+                    <li>26</li>
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>31</li>
+                </ul>
+            </div>
+        </div>
+        <div id="data-area">
+            <div id="in-data-area">
+                <div id="data-day">
+                    2023 / 12 / 25
+                </div>
+                <div class="data-header">
+                    스텔라
+                </div>
+                <div class="data-tab" id="data-member">
+                    네네코 마시로, 시라유키 히나
+                </div>
+                <div class="data-header">
+                    방송 내용
+                </div>
+                <div class="data-tab" id="data-contents">
+                    싱크룸<br>
+                    Just Chatting<br>
+                    발로란트
+                </div>
+                <div class="data-header">
+                    클립 수
+                </div>
+                <div class="data-tab" id="data-clips">
+                    31개
+                </div>
+                <div>
+                    <a id="move-btn" href="https://www.naver.com">해당 날짜로 바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

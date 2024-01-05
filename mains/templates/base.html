@@ -1,0 +1,104 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link href="{% static 'css/body.css' %}" rel="stylesheet" type="text/css" />
+    <!--바디-->
+
+    <link href="{% static 'css/members.css' %}" rel="stylesheet" type="text/css" />
+    <!--헤더1-->
+
+    <link href="{% static 'css/utility.css' %}" rel="stylesheet" type="text/css" />
+    <!--헤더2-->
+
+    <link href="{% static 'css/calender.css' %}" rel="stylesheet" type="text/css" />
+    <!--캘린더-->
+
+    <link href="{% static 'css/data-area.css' %}" rel="stylesheet" type="text/css" />
+    <!--데이터 보여주는거-->
+
+    {{stella|default:"not_select"}}
+
+    {% if stella == 'kanna'%}
+        <link href="{% static 'css/focus/kanna.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'yuni'%}
+        <link href="{% static 'css/focus/yuni.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'shiro'%}
+        <link href="{% static 'css/focus/shiro.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'hina'%}
+        <link href="{% static 'css/focus/hina.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'lize'%}
+        <link href="{% static 'css/focus/lize.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'tabi'%}
+        <link href="{% static 'css/focus/tabi.css' %}" rel="stylesheet" type="text/css" />
+    {% endif %}
+
+<title>Stellive BangSong Calender</title>
+</head>
+<body>
+    <div id="tap">
+        <div id="members">
+            <div class="member" id="kanna">
+                <img src="{% static 'images/kannaHeart.png' %}" alt="">
+                칸나
+            </div>
+
+            <div class="member" id="yuni">
+                <img src="{% static 'images/yuniHeart.png' %}" alt="">
+                유니
+            </div>
+
+            <div class="member" id="shiro">
+                <img src="{% static 'images/shiroHeart.png' %}" alt="">
+                마시로
+            </div>
+
+            <div class="member" id="hina">
+                <img src="{% static 'images/hinaHeart.png' %}" alt="">
+                히나
+            </div>
+
+            <div class="member" id="lize">
+                <img src="{% static 'images/lizeHeart.png' %}" alt="">
+                리제
+            </div>
+
+            <div class="member" id="tabi">
+                <img src="{% static 'images/tabiHeart.png' %}" alt="">
+                타비
+            </div>
+            
+        </div>
+        <div id="utility">
+            <div id="utility-area">
+                <div class="utility-item" id="add-data">
+                    추가하기
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    
+    {% endblock %}
+    <div id="footer">
+        <div id="footer-area">
+            <div id="copyright">
+                made by maro(<a href="https://github.com/ghostclog">길잃은유령개</a>) / <a href="https://github.com/ghostclog/stellive_calander">해당 프로잭트 레포지토리로 가기</a>
+            </div>
+            <div class="footer-item">
+                요청사항
+            </div>
+            <div class="footer-item">
+                피드백
+            </div>
+        </div>
+    </div>
+</body>
+</html>

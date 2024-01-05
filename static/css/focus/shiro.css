@@ -1,0 +1,19 @@
+#shiro{
+    background-color:#292929;
+    color: white;
+    font-weight: bold;
+    cursor:auto;
+    transform: scale(1.2);
+}
+
+#shiro:hover{
+    transform: scale(1.2);
+}
+
+#shiro img{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    display: inline;
+}

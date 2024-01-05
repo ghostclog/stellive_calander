@@ -1,0 +1,79 @@
+/*
+고정탭 영역
+*/
+#tap{
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    float: left;
+    z-index: 3;
+    top: 0;
+}
+
+#members{
+   position: relative;
+   width: 70%;
+   left: 2%;
+   height: 100%;
+   float: left;
+}
+/*
+모바일 고려시
+1. members의left를 2%에서 더 늘리거나, 환경을 좀 수정해야할뜻
+2. member의 margin-right를 줄여야할뜻
+*/
+
+.member{
+    position: relative;
+    color: black;
+    float: left;
+    top: 25px;
+    line-height: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 23px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(214, 214, 214);
+    transition: 0.2s ease-in-out;
+}
+
+.member:hover{
+    transform: scale(1.2);
+}
+
+.member img{
+    display: none;
+}
+
+#kanna:hover{
+    background-color:#373584;
+    color: white;
+    font-weight: bold;
+}
+#yuni:hover{
+    background-color:#b77de4;
+    color: white;
+    font-weight: bold;
+}
+#shiro:hover{
+    background-color:#292929;
+    color: white;
+    font-weight: bold;
+}
+#hina:hover{
+    background-color:#f2dcbf;
+    color: white;
+    font-weight: bold;
+}
+#lize:hover{
+    background-color:#d34344;
+    color: white;
+    font-weight: bold;
+}
+#tabi:hover{
+    background-color:#9adaff;
+    color: white;
+    font-weight: bold;
+}

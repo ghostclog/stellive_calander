@@ -1,0 +1,112 @@
+#for-margin{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    float: left;
+}
+
+#contents{
+    position: relative;
+    top: -20px;
+    height: 750px;
+}
+
+
+#contents-area{
+    position: relative;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    height: 100%;
+    top: 80px;
+    background-color: white;
+}
+
+.wrapper {
+    display: grid;  /* 배치방식 그리드 */
+    place-items: center;    /* div 영역 내의 item들을 가운데로 모으기 */
+    width: 55%;    /* 요소들을 가운데로 모았기 때문에 너비에 따라 달력의 위치가 바뀜 */
+    border-right: 2px solid black;
+    float: left;
+
+    /* padding으로 요소에 여유주기 */
+
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* #6 연도와 월. 그리고, 화살표에 대한 css */
+.wrapper .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.wrapper .nav .current-date {
+    font-size: 30px;
+    font-weight: 800;
+}
+.wrapper .nav button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 40px;
+    color: #878787;
+}
+
+/*#7*/
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.calendar .weeks li {
+    font-weight: 500;
+}
+.calendar .days {
+    margin-bottom: 20px;
+}
+.calendar ul li {
+    /*#8*/
+    width: calc(100% / 7);
+    /*#9*/
+    position: relative;
+}
+.calendar .days li {
+    /*#10*/
+    z-index: 1;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+/*#11*/
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active {
+    color: #fff;
+}
+.calendar .days li::before {
+    position: absolute;
+    content: '';
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+.days li:hover::before {
+    background: #f2f2f2;
+}
+.days li.active::before {
+    background: #008aff;
+}
