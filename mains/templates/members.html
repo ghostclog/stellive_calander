@@ -16,7 +16,7 @@
             <header>
                 <div class="nav">
                   <button class="material-icons"> &lt; </button>
-                  <p class="current-date">September 2022</p>
+                  <p class="current-date">{{ string_date }}</p>
                   <button class="material-icons"> &gt; </span>
                 </div>
             </header>
@@ -31,10 +31,7 @@
                     <li>Sat</li>
                 </ul>
                 <ul class="days">
-                    <li class="inactive">27</li>
-                    <li class="inactive">28</li>
-                    <li class="inactive">29</li>
-                    <li class="inactive">30</li>
+                    <li class="inactive">31</li>
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
@@ -66,33 +63,35 @@
                     <li>29</li>
                     <li>30</li>
                     <li>31</li>
+                    <li class="inactive">1</li>
+                    <li class="inactive">2</li>
+                    <li class="inactive">3</li>
                 </ul>
             </div>
         </div>
         <div id="data-area">
+
             <div id="in-data-area">
                 <div id="data-day">
-                    2023 / 12 / 25
+                    {{ total_date_data }}
                 </div>
                 <div class="data-header">
                     스텔라
                 </div>
                 <div class="data-tab" id="data-member">
-                    네네코 마시로, 시라유키 히나
+                    {{ stella_name }}
                 </div>
                 <div class="data-header">
                     방송 내용
                 </div>
                 <div class="data-tab" id="data-contents">
-                    싱크룸<br>
-                    Just Chatting<br>
-                    발로란트
+                    {{ contents }}
                 </div>
                 <div class="data-header">
                     클립 수
                 </div>
                 <div class="data-tab" id="data-clips">
-                    31개
+                    {{ clips }}
                 </div>
                 <div>
                     <a id="move-btn" href="https://www.naver.com">해당 날짜로 바로가기</a>
