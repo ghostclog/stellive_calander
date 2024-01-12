@@ -50,7 +50,7 @@ def stella_date_page(request,stella,date):
                         'total_date_data' : "아직 날짜가 설정되지 않았습니다.",
                         'contents' : "아직 날짜가 설정되지 않았습니다.",
                         'clips' : "아직 날짜가 설정되지 않았습니다.",
-                        'for_calander_date':[year,month],})
+                        'for_calander_date':[year,month,0],})
                         #'bangsong_day' : bangsong_day})
     
 # 메인 페이지3(날짜 선택 / 캘린더에 방송 한 날짜 굵게 표시 + 정보창에 정보 띄우기)
@@ -96,5 +96,5 @@ def stella_detail_page(request,stella,date,day):
                             'total_date_data' : date_data,
                             'contents' : contents,
                             'clips' : str(kirinuky_data) + "개",
-                            'for_calander_date':[year,month],})
+                            'for_calander_date':[year,month,day],})
                             #'bangsong_day' : bangsong_day})

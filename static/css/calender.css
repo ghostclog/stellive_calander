@@ -26,8 +26,8 @@
     display: grid;  /* 배치방식 그리드 */
     place-items: center;    /* div 영역 내의 item들을 가운데로 모으기 */
     width: 55%;    /* 요소들을 가운데로 모았기 때문에 너비에 따라 달력의 위치가 바뀜 */
-    border-right: 2px solid black;
     float: left;
+    
 
     /* padding으로 요소에 여유주기 */
 
@@ -45,6 +45,10 @@
 .wrapper .nav .current-date {
     font-size: 30px;
     font-weight: 800;
+    width: 240px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
 }
 .wrapper .nav button {
     border: none;
@@ -59,6 +63,11 @@
     color: #878787;
 }
 
+.calendar{
+    width: 95%;
+    height: 100%;
+}
+
 /*#7*/
 .calendar ul {
     display: flex;
@@ -67,7 +76,8 @@
     text-align: center;
 }
 .calendar .weeks li {
-    font-weight: 500;
+    font-weight: bold;
+    font-size: large;
 }
 .calendar .days {
     margin-bottom: 20px;
@@ -104,9 +114,19 @@
     border-radius: 50%;
     z-index: -1;
 }
-.days li:hover::before {
+.days .daaay:hover::before {
     background: #f2f2f2;
 }
-.days li.active::before {
-    background: #008aff;
+
+.days .daaay:active::before{
+    background: #d4d4d4;
+}
+
+.selected_day::before{
+    background-color: #727cdb;
+}
+
+.selected_day{
+    color: white;
+    font-weight: 900;
 }
