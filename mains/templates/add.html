@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div id="for-margin">
+</div>
+<div id="contents">
+    <div id="contents-area">
+        {% if category == reply %}
+        <form method="post" action="{% url 'add' category = reply %}">
+        {% if category == clip %}
+        <form method="post" action="{% url 'add' category = clip %}">
+        {% endif %}
+        {{ form.as_p }}
+        <button type="submit">등록하기!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

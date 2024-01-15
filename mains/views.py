@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from datetime import datetime
-from . import models
+from . import models,forms
 
 
 
@@ -10,8 +10,6 @@ def main_page(request):
         formatted_date = datetime.now().strftime('%B %Y')
         return render(request,"page.html",{'string_date' : formatted_date})
     
-
-
 # 메인 페이지2(스텔라 선택 후. 캘린더는 최신 연월로 설정 / 캘린더에 방송 한 날짜 굵게 표시)
 def stella_default_page(request,stella):
     if request.method == "GET":
@@ -19,8 +17,6 @@ def stella_default_page(request,stella):
         month = str(datetime.now().month)
         redirect_url = "/mains/" + stella + "/" + year + month.zfill(2)
         return redirect(redirect_url)
-
-    
 
 # 메인 페이지3(스텔라 선택. 연월 선택 시 / 캘린더에 방송 한 날짜 굵게 표시)
 def stella_date_page(request,stella,date):
@@ -98,3 +94,26 @@ def stella_detail_page(request,stella,date,day):
                             'clips' : str(kirinuky_data) + "개",
                             'for_calander_date':[year,month,day],})
                             #'bangsong_day' : bangsong_day})
+    
+# 클립 및 다시보기 추가하는 사이트
+def add_page(request,category):
+    # 사이트 입장
+    if request.method == "GET":
+        form = None
+        if category == "clip":
+            form = forms.clip_regist_form()
+        if category == "reply":
+            form = forms.reply_regist_form()
+        return render(request,"add.html",{'form' : form,'category':category})
+   
+    # 데이터 등록
+    if request.method == "POST":
+        form = None
+        if category == "clip":
+            form = forms.clip_regist_form(request.POST)
+            if form.is_valid():
+                pass
+        if category == "reply":
+            form = forms.reply_regist_form(request.POST)
+            if form.is_valid():
+                pass
