@@ -6,13 +6,73 @@
 </div>
 <div id="contents">
     <div id="contents-area">
-        {% if category == reply %}
-        <form method="post" action="{% url 'add' category = reply %}">
-        {% if category == clip %}
-        <form method="post" action="{% url 'add' category = clip %}">
+        {% if category == 'reply' %}
+        <form method="post" action="{% url 'add' category='reply' %}">
+            <div id="form-area">
+                <div id = "data-input-area">
+                    <label for="{{ form.stella.id_for_label }}">
+                        스텔라 이름
+                        {{ form.stella }}
+                    </label>
+                    <br>
+                    <label for="{{ form.replay_link.id_for_label }}">
+                        다시보기 링크
+                        {{ form.replay_link }}
+                    </label>
+                    <br>
+                    <label for="{{ form.replay_day.id_for_label }}">
+                        방송 일자
+                        {{ form.replay_day }}
+                    </label>
+                    <br>
+                    <label for="{{ form.replay_contents.id_for_label }}">
+                        방송 내용
+                        {{ form.replay_contents }}
+                    </label>
+                </div>
         {% endif %}
-        {{ form.as_p }}
-        <button type="submit">등록하기!</button>
+
+        {% if category == 'clip' %}
+        <form method="post" action="{% url 'add' category='clip' %}">
+            <div id="form-area">
+                <label>
+                    <input type="checkbox" name="stellas" value="아이리 칸나"> 칸나
+                </label>
+                <label>
+                    <input type="checkbox" name="stellas" value="아야츠노 유니"> 유니
+                </label>
+                <label>
+                    <input type="checkbox" name="stellas" value="네네코 마시로"> 마시로
+                </label>
+                <label>
+                    <input type="checkbox" name="stellas" value="시라유키 히나"> 히나
+                </label>
+                <label>
+                    <input type="checkbox" name="stellas" value="아카네 리제"> 리제
+                </label>
+                <label>
+                    <input type="checkbox" name="stellas" value="아라하시 타비"> 타비
+                </label>
+                <div id = "data-input-area"> 
+                    <label for="{{ form.kirinuky_link.id_for_label }}">
+                        키리누키(클립) 링크<br>
+                        {{ form.kirinuky_link }}
+                    </label>
+                    <br>
+                    <label for="{{ form.kirinuky_title.id_for_label }}">
+                        키리누키(클립) 제목<br>
+                        {{ form.kirinuky_title }}
+                    </label>
+                    <br>
+                    <label for="{{ form.kirinuky_day.id_for_label }}">
+                        방송 일자<br>
+                        {{ form.kirinuky_day }}
+                    </label>
+                </div>
+        {% endif %}
+            {% csrf_token %}
+                <button type="submit">등록하기!</button>
+            </div>
         </form>
     </div>
 </div>

@@ -108,12 +108,18 @@ def add_page(request,category):
    
     # 데이터 등록
     if request.method == "POST":
-        form = None
         if category == "clip":
+            stellas = request.POST.getlist('stellas')
+            stella_list = ", ".join(stellas)
             form = forms.clip_regist_form(request.POST)
             if form.is_valid():
-                pass
+                clip_instance = form.save(commit=False)
+                clip_instance.kirinuky_stella = stella_list
+                clip_instance.save()
+                return redirect("/")
+            
         if category == "reply":
             form = forms.reply_regist_form(request.POST)
             if form.is_valid():
-                pass
+                reply_instance = form.save()
+                return redirect("/")
