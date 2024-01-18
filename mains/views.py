@@ -113,13 +113,30 @@ def add_page(request,category):
             stella_list = ", ".join(stellas)
             form = forms.clip_regist_form(request.POST)
             if form.is_valid():
+                # 링크의 아이디값 추출
+                url1 = form.cleaned_data['kirinuky_link']
+                url2 = url1.split('?v=')
+                url3 = url2[1].split('&')
+                url4 = "www.youtube.com/embed/" + url3
+
                 clip_instance = form.save(commit=False)
                 clip_instance.kirinuky_stella = stella_list
+                clip_instance.kirinuky_link = url4
+                
                 clip_instance.save()
                 return redirect("/")
             
         if category == "reply":
             form = forms.reply_regist_form(request.POST)
             if form.is_valid():
-                reply_instance = form.save()
+
+                # 링크의 아이디값 추출
+                url1 = form.cleaned_data['replay_link']
+                url2 = url1.split('?v=')
+                url3 = url2[1].split('&')
+                url4 = "www.youtube.com/embed/" + url3
+
+                reply_instance = form.save(commit=False)
+                reply_instance.replay_link = url4
+                reply_instance.save()
                 return redirect("/")
