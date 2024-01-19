@@ -35,8 +35,7 @@
 #footer {
     position: relative;
     width: 100%;
-    background-color: rgb(39, 39, 39);
-    height: 25px;
+    height: 50px;
     top: 83px;
     z-index: 1;
   }

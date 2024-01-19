@@ -54,7 +54,7 @@ def stella_detail_page(request,stella,date,day):
     if request.method == "GET":
 
         # 일자를 잘못 입력 한 경우.
-        if(len(day) > 2):
+        if(int(day) > 31):
             return redirect("/mains/")
 
         # 날짜 정보
@@ -62,6 +62,9 @@ def stella_detail_page(request,stella,date,day):
         month = int(date[4:])
         date_data = str(year) + " / " + str(month).zfill(2) +" / " + str(day).zfill(2)
         formatted_date = datetime(year, month, 1).strftime('%B %Y')
+        
+        # 변수 초기화
+        contents = ""
 
         try:
             # stella변수. 코드에서 이름으로 변환
@@ -71,17 +74,28 @@ def stella_detail_page(request,stella,date,day):
 
         # 키리누키(클립) 데이터(갯수) 불러오기
         kirinuky_data = models.kirinuky.objects.filter(
-                kirinuky_day__year=year, kirinuky_day__month=month, kirinuky_day__day=day, kirinuky_stella__icontains = stella_name
+                kirinuky_day__year=year, 
+                kirinuky_day__month=month, 
+                kirinuky_day__day=day, 
+                kirinuky_stella__icontains = stella_name
             ).count()
         
         #bangsong_day = list(models.Replay.objects.filter(stella = stella, replay_day__year=year, replay_day__month=month))
-        try:
             #방송 데이터 가져오기(에러 발생시, 해당 날짜에는 방송을 하지 않거나, 다시보기가 올라오지 않음.)
-            bangsong_data = models.Replay.objects.filter(
-                stella = stella_name, replay_day__year=year, replay_day__month=month, replay_day__day=day
-            ).get()
-            contents = bangsong_data.replay_contents
-        except:
+        bangsong_data_list = models.Replay.objects.filter(
+            stella=stella_name, 
+            replay_day__year=year, 
+            replay_day__month=month, 
+            replay_day__day=day
+        )
+
+        # 리스트에 결과가 있을 때 처리
+        if bangsong_data_list.exists():
+            datas = []
+            for i in bangsong_data_list:
+                datas.append(i.replay_contents)
+            contents = ", ".join(datas)
+        else:
             contents = "해당하는 날짜에 대한 데이터가 없습니다."
 
         # 결과 출력
@@ -95,6 +109,38 @@ def stella_detail_page(request,stella,date,day):
                             'for_calander_date':[year,month,day],})
                             #'bangsong_day' : bangsong_day})
     
+# 다시보기 및 클립 보기
+def test(request,stella,date,day):
+    if request.method == "GET":
+        try:
+            # stella변수. 코드에서 이름으로 변환
+            stella_name = models.Stellas.objects.get(stella_name_code = stella)
+        except:
+            return redirect("/mains/")
+
+        year = int(date[0:4])
+        month = int(date[4:])
+        date_data = str(year) + " / " + str(month).zfill(2) +" / " + str(day).zfill(2)
+
+        reply_date = models.Replay.objects.filter(
+            stella=stella_name, 
+            replay_day__year=year, 
+            replay_day__month=month, 
+            replay_day__day=day)
+    
+        kirinuky_data = models.kirinuky.objects.filter(
+            kirinuky_day__year=year, 
+            kirinuky_day__month=month, 
+            kirinuky_day__day=day, 
+            kirinuky_stella__icontains = stella_name)
+        
+        return render(request,"view.html",{
+            'stella': stella,
+            'total_date_data' : date_data,
+            'reply_date' : reply_date,
+            'kirinuky_data' : kirinuky_data,
+        })
+
 # 클립 및 다시보기 추가하는 사이트
 def add_page(request,category):
     # 사이트 입장

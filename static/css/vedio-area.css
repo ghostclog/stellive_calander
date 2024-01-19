@@ -1,7 +1,43 @@
+#page-area{
+    position: relative;
+    width: 70%;
+    left: 15%;
+    top: 60px;
+}
+
 #reply-area{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+
+.sanse-data{
+    margin: 1px;
+}
+
+.reply-data{
+    position: absolute;
+    width: 40%;
+    right: 0px;
+    top: 60px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#clip-area{
+    position: relative;
+    top: 100px;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+#reply-vedio{
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
+    top: 20px;
 }
 
 .clip-vedio{
@@ -9,17 +45,24 @@
     width: 100%;
     padding-bottom: 56.25%;
     transition: height 0.5s ease-in-out;
+    margin: 0 auto; /* 가운데 정렬 추가 */
 }
 
 .vedio{
     position: absolute;
     width: 100%;
     height: 100%;
+    left: 0px;
+    top: 0px;
 }
 
 .clip-tap{
     width: 100%;
     height: 50px;
+    background-color: black;
+    border: 2.5px solid black;
+    margin-top: 30px;
+    text-align: center; /* 가운데 정렬 추가 */
 }
 
 .clip-btn{
@@ -38,4 +81,5 @@
     width: calc(100% - 55px);
     float: left;
     line-height: 50px;
+    color: white;
 }

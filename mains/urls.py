@@ -12,5 +12,7 @@ urlpatterns = [
     path('request', views.stella_detail_page),  # 요청사항
     path('feedback', views.stella_detail_page),  # 피드백
 
+    path('test', views.test),  # 피드백
+
 
 ]
