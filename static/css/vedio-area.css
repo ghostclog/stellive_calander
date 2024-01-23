@@ -12,7 +12,7 @@
     width: 50%;
 }
 
-.sanse-data{
+.sangse-data{
     margin: 1px;
 }
 
@@ -43,8 +43,7 @@
 .clip-vedio{
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;
-    transition: height 0.5s ease-in-out;
+    transition: 0.15s ease-in-out;
     margin: 0 auto; /* 가운데 정렬 추가 */
 }
 
@@ -72,7 +71,10 @@
     background-color: rgb(61, 61, 61);
     width: 40px;
     height: 40px;
+    line-height: 30px;
     float: left;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .clip-title{

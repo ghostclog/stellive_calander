@@ -5,95 +5,38 @@
 </div>
     <div id="page-area">
         <!-- 다시보기 -->
-        <div id="reply-area">
-            <div id="reply-vedio">
-                <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
+        {% for reply in reply_date %}
+            <div id="reply-area">
+                <div id="reply-vedio">
+                    <iframe class = "vedio" src="https://{{ reply.replay_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+                </div>
             </div>
-        </div>
-        <div class="reply-data">
-            <br><p class="sanse-data">- 일자: 2024 / 01 / 19</p>
-            <br><p class="sanse-data">- 스텔라: 네네코 마시로</p>
-            <br><p class="sanse-data">- 방송 내용: 새벽 노래방</p>
-        </div>
+            <div class="reply-data">
+                <br><p class="sangse-data">- 일자: {{ total_date_data }} </p>
+                <br><p class="sangse-data">- 스텔라: {{ stella }} </p>
+                <br><p class="sangse-data">- 방송 내용: {{ reply.replay_contents }} </p>
+            </div>
+        {% endfor %}
         <!-- 클립 -->
         <div id="clip-area">
             <div class="clips">
-                <div class="clip-tap 1">
-                    <div class = "clip-btn">
-                        &gt;
+                {% for kirinuky in kirinuky_data %}
+                    <div class = "clip-box">
+                        <div class="clip-tap">
+                            <div class = "clip-btn">
+                                &gt;
+                            </div>
+                            <div class = "clip-title">
+                                {{ kirinuky.kirinuky_title }}
+                            </div>
+                        </div>
+                        <div class = "clip-vedio">
+                            <iframe class = "vedio" src="https://{{ kirinuky.kirinuky_link }}"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 1">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
-    
-                <div class="clip-tap 2">
-                    <div class = "clip-btn">
-                        &gt;
-                    </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 2">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
-    
-                <div class="clip-tap 3">
-                    <div class = "clip-btn">
-                        &gt;
-                    </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 3">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
-    
-                <div class="clip-tap 4">
-                    <div class = "clip-btn">
-                        &gt;
-                    </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 4">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
-    
-                <div class="clip-tap 5">
-                    <div class = "clip-btn">
-                        &gt;
-                    </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 5">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
-    
-                <div class="clip-tap 6">
-                    <div class = "clip-btn">
-                        &gt;
-                    </div>
-                    <div class = "clip-title">
-                        화장실 다녀왔더니 영웅이 되었던 건에 대하여..
-                    </div>
-                </div>
-                <div class="clip-vedio 6">
-                    <iframe class = "vedio" src="https://www.youtube.com/embed/e1GWngj7UOE?si=CkWpdh_k-HEsdo-H" allowfullscreen></iframe>
-                </div>
+                {% endfor %}
+                <script src="{% static 'js/clip.js' %}"></script>
             </div> 
         </div>
     </div>
-
-
-
-
 {% endblock %}

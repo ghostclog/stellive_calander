@@ -141,9 +141,22 @@ const daySelect = () => {
 }
 
 
+
 ////////////////// 이벤트 호출 및 등록하는 부분 /////////////////
 renderCalendar();
 selectedDay();
 daySelect();
 beforeMonthArrow.addEventListener('click',beforeMonths);
 afterMonthArrow.addEventListener('click',afterMonths);
+
+///////////////// a태그와 연결된 링크 수정 /////////////////
+year_month = ""
+
+if (months < 10) {
+    year_month = "" + year + "0" + months;
+} else {
+    year_month = "" + year + months;
+}
+
+let a_link = document.getElementById('move-btn');
+a_link.href = '/mains/' + stella + "/" + year_month + "/" + day + "/show";

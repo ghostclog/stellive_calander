@@ -7,8 +7,16 @@ from . import models,forms
 # 메인 페이지1(스텔라 선택 전.)
 def main_page(request):
     if request.method == "GET":
-        formatted_date = datetime.now().strftime('%B %Y')
-        return render(request,"page.html",{'string_date' : formatted_date})
+        current_datetime = datetime.now()
+        formatted_date = current_datetime.strftime('%B %Y')
+        return render(request,"page.html",{
+            'string_date' : formatted_date,
+            'for_calander_date' : [
+                current_datetime.year,
+                current_datetime.month,
+                current_datetime.day
+            ]
+                                           })
     
 # 메인 페이지2(스텔라 선택 후. 캘린더는 최신 연월로 설정 / 캘린더에 방송 한 날짜 굵게 표시)
 def stella_default_page(request,stella):
@@ -110,7 +118,7 @@ def stella_detail_page(request,stella,date,day):
                             #'bangsong_day' : bangsong_day})
     
 # 다시보기 및 클립 보기
-def test(request,stella,date,day):
+def vedios(request,stella,date,day):
     if request.method == "GET":
         try:
             # stella변수. 코드에서 이름으로 변환
@@ -163,7 +171,7 @@ def add_page(request,category):
                 url1 = form.cleaned_data['kirinuky_link']
                 url2 = url1.split('?v=')
                 url3 = url2[1].split('&')
-                url4 = "www.youtube.com/embed/" + url3
+                url4 = "www.youtube.com/embed/" + url3[0]
 
                 clip_instance = form.save(commit=False)
                 clip_instance.kirinuky_stella = stella_list
@@ -180,7 +188,7 @@ def add_page(request,category):
                 url1 = form.cleaned_data['replay_link']
                 url2 = url1.split('?v=')
                 url3 = url2[1].split('&')
-                url4 = "www.youtube.com/embed/" + url3
+                url4 = "www.youtube.com/embed/" + url3[0]
 
                 reply_instance = form.save(commit=False)
                 reply_instance.replay_link = url4

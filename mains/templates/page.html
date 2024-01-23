@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
     <div id="for-margin">
     </div>
@@ -30,44 +31,14 @@
                         <li>Sat</li>
                     </ul>
                     <ul class="days">
-                        <li class="inactive">31</li>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                        <li class="inactive">1</li>
-                        <li class="inactive">2</li>
-                        <li class="inactive">3</li>
                     </ul>
                 </div>
             </div>
+            <input type="hidden" id="year" name="year" value = "{{ for_calander_date.0 }}">
+                <input type="hidden" id="months" name="months" value = "{{ for_calander_date.1 }}">
+                <input type="hidden" id="day" name="day" value = "{{ for_calander_date.2 }}">
+                <input type="hidden" id="stella" name="stella" value = "not_select">
+            <script src="{% static 'js/calander.js' %}"></script>
             <div id="data-area">
                 <div id="how-to-use">
                     <div id="main">
