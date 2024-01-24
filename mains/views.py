@@ -36,13 +36,15 @@ def stella_date_page(request,stella,date):
         try: # 연 월 데이터 잘못 입력시
             formatted_date = datetime(year, month, 1).strftime('%B %Y')
         except:
-            return redirect("/mains/")
+            request.session['error_message'] = '입력하신 날짜값이 잘못 되었습니다.'
+            return redirect("/")
 
         try:
             # stella변수. 코드에서 이름으로 변환 / 스텔라 이름 잘못 입력시
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/mains/")
+            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
+            return redirect("/")
         
         #bangsong_day = list(models.Replay.objects.filter(stella = stella_name, replay_day__year=year, replay_day__month=month))
 
@@ -62,8 +64,9 @@ def stella_detail_page(request,stella,date,day):
     if request.method == "GET":
 
         # 일자를 잘못 입력 한 경우.
-        if(int(day) > 31):
-            return redirect("/mains/")
+        if(int(day) > 31 or int(day) < 1):
+            request.session['error_message'] = '일자 입력이 잘못되었습니다.'
+            return redirect("/mains/"+stella+"/"+date)
 
         # 날짜 정보
         year = int(date[0:4])
@@ -78,7 +81,8 @@ def stella_detail_page(request,stella,date,day):
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/mains/")
+            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
+            return redirect("/")
 
         # 키리누키(클립) 데이터(갯수) 불러오기
         kirinuky_data = models.kirinuky.objects.filter(
@@ -124,7 +128,8 @@ def vedios(request,stella,date,day):
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/mains/")
+            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
+            return redirect("/")
 
         year = int(date[0:4])
         month = int(date[4:])
@@ -142,6 +147,10 @@ def vedios(request,stella,date,day):
             kirinuky_day__day=day, 
             kirinuky_stella__icontains = stella_name)
         
+        if(not(reply_date.exists() or kirinuky_data.exists())):
+            request.session['error_message'] = '해당하는 날짜에 다시보기 혹은 클립이 하나도 등록되지 않습니다.'
+            return redirect("/mains/"+stella+"/"+date+"/"+day)
+
         return render(request,"view.html",{
             'stella': stella,
             'total_date_data' : date_data,

@@ -30,6 +30,9 @@
     <link href="{% static 'css/vedio-area.css' %}" rel="stylesheet" type="text/css" />
     <!-- 데이터 보기 css -->
 
+    <link href="{% static 'css/modal.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 모달창 css -->
+
     {{ stella|default:"not_select" }}
 
     {% if stella == 'kanna'%}
@@ -106,5 +109,14 @@
             </div>
         </div>
     </div>
+    <div id="clip-Modal" class="modal">
+        <div class="modal-content">
+            <p>등록하실 영상을 선택하세요</p>
+            <button id="option1">다시보기</button>
+            <button id="option2">키리누키</button>
+            <button id="option3">닫기</button>
+        </div>
+      </div>
+    <script src="{% static 'js/etc.js' %}"></script>
 </body>
 </html>

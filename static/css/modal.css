@@ -1,0 +1,26 @@
+/* 모달 css */
+.modal {
+    display: none;
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100%;
+}
+
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.modal-content p{
+    position: relative;
+    top: -15px;
+}

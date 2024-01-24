@@ -11,23 +11,31 @@
             <div id="form-area">
                 <div id = "data-input-area">
                     <label for="{{ form.stella.id_for_label }}">
-                        스텔라 이름
-                        {{ form.stella }}
+                        <div>
+                            스텔라 이름
+                            {{ form.stella }}
+                        </div>
                     </label>
                     <br>
                     <label for="{{ form.replay_link.id_for_label }}">
-                        다시보기 링크
+                        <div>
+                            다시보기 링크
                         {{ form.replay_link }}
+                        </div>
                     </label>
                     <br>
                     <label for="{{ form.replay_day.id_for_label }}">
-                        방송 일자
+                        <div>
+                            방송 일자
                         {{ form.replay_day }}
+                        </div>
                     </label>
                     <br>
                     <label for="{{ form.replay_contents.id_for_label }}">
-                        방송 내용
-                        {{ form.replay_contents }}
+                        <div>
+                            방송 내용
+                            {{ form.replay_contents }}
+                        </div>
                     </label>
                 </div>
         {% endif %}
