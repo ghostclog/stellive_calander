@@ -24,6 +24,7 @@ def stella_default_page(request,stella):
         year = str(datetime.now().year)
         month = str(datetime.now().month)
         redirect_url = "/mains/" + stella + "/" + year + month.zfill(2)
+
         return redirect(redirect_url)
 
 # 메인 페이지3(스텔라 선택. 연월 선택 시 / 캘린더에 방송 한 날짜 굵게 표시)
@@ -46,7 +47,10 @@ def stella_date_page(request,stella,date):
             request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
             return redirect("/")
         
-        #bangsong_day = list(models.Replay.objects.filter(stella = stella_name, replay_day__year=year, replay_day__month=month))
+        bangsong_day = list(models.Replay.objects.filter(
+            stella = stella_name, 
+            replay_day__year = year, 
+            replay_day__month = month).values_list('replay_day__day', flat=True))
 
 
         return render(request,"members.html",
@@ -56,8 +60,8 @@ def stella_date_page(request,stella,date):
                         'total_date_data' : "아직 날짜가 설정되지 않았습니다.",
                         'contents' : "아직 날짜가 설정되지 않았습니다.",
                         'clips' : "아직 날짜가 설정되지 않았습니다.",
-                        'for_calander_date':[year,month,0],})
-                        #'bangsong_day' : bangsong_day})
+                        'for_calander_date':[year,month,0],
+                        'bangsong_day' : bangsong_day})
     
 # 메인 페이지3(날짜 선택 / 캘린더에 방송 한 날짜 굵게 표시 + 정보창에 정보 띄우기)
 def stella_detail_page(request,stella,date,day):
@@ -91,14 +95,18 @@ def stella_detail_page(request,stella,date,day):
                 kirinuky_day__day=day, 
                 kirinuky_stella__icontains = stella_name
             ).count()
-        
-        #bangsong_day = list(models.Replay.objects.filter(stella = stella, replay_day__year=year, replay_day__month=month))
-            #방송 데이터 가져오기(에러 발생시, 해당 날짜에는 방송을 하지 않거나, 다시보기가 올라오지 않음.)
+    
+        bangsong_day = list(models.Replay.objects.filter(
+            stella = stella_name, 
+            replay_day__year = year, 
+            replay_day__month = month).values_list('replay_day__day', flat=True))
+
+        #방송 데이터 가져오기(에러 발생시, 해당 날짜에는 방송을 하지 않거나, 다시보기가 올라오지 않음.)
         bangsong_data_list = models.Replay.objects.filter(
-            stella=stella_name, 
-            replay_day__year=year, 
-            replay_day__month=month, 
-            replay_day__day=day
+            stella = stella_name, 
+            replay_day__year = year, 
+            replay_day__month = month, 
+            replay_day__day = day
         )
 
         # 리스트에 결과가 있을 때 처리
@@ -118,8 +126,8 @@ def stella_detail_page(request,stella,date,day):
                             'total_date_data' : date_data,
                             'contents' : contents,
                             'clips' : str(kirinuky_data) + "개",
-                            'for_calander_date':[year,month,day],})
-                            #'bangsong_day' : bangsong_day})
+                            'for_calander_date':[year,month,day],
+                            'bangsong_day' : bangsong_day})
     
 # 다시보기 및 클립 보기
 def vedios(request,stella,date,day):
@@ -203,3 +211,18 @@ def add_page(request,category):
                 reply_instance.replay_link = url4
                 reply_instance.save()
                 return redirect("/")
+            
+def requests(request):
+    if request.method == "GET":
+        form = forms.requests_form()
+        return render(request,"requests.html",{'form':form})
+
+    if request.method == "POST":
+        form = forms.requests_form(request.POST)
+        category = request.POST.get('category')
+        data_model = form.save(commit=False)
+        data_model.requests_category = category
+        data_model.save()
+        return redirect("/")
+
+

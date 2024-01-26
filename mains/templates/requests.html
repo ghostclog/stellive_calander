@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div id="for-margin">
+</div>
+<div id="contents">
+    <div id="contents-area">
+        <div id="requests-area">
+            <form action="/requests" method="post">
+                {% csrf_token %}
+                <label for="category">문의 사항을 선택하세요</label>
+                <select id="category" name="category">
+                    <option value="option1">다시보기</option>
+                    <option value="option2">클립</option>
+                </select>
+
+                {{ form }}
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

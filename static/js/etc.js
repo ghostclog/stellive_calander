@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = function() {
     const errorMessage = sessionStorage.getItem('error_message');
 
     if (errorMessage) {
         alert(errorMessage);
         sessionStorage.removeItem('error_message');  // 경고 후 세션 삭제
     }
-});
+};
 
 // 모달 열기 버튼 클릭 시 이벤트 처리
 document.getElementById('add-data').addEventListener('click', function () {

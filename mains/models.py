@@ -20,3 +20,10 @@ class kirinuky(models.Model):
     kirinuky_link = models.CharField(max_length=300)    # 클립 링크
     kirinuky_title = models.CharField(max_length=50)    # 클립명
     kirinuky_day = models.DateField(null=True)          # 클립 원본 날짜
+
+    def __str__(self):  # 스텔라 이름 반환
+        return self.kirinuky_title
+
+class requests(models.Model):
+    requests_category = models.CharField(max_length=20)
+    requests_con = models.CharField(max_length=200)

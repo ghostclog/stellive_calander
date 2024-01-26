@@ -9,7 +9,8 @@ urlpatterns = [
     path('mains/<str:stella>/<str:date>/<str:day>/show', views.vedios),  # 날짜 자세히 보기
 
     path('add/<str:category>', views.add_page,name='add'),  # 키리누키 및 다시보기 정보 추가
-    path('request', views.stella_detail_page),  # 요청사항
+    path('requests', views.requests),  # 요청사항
     path('feedback', views.stella_detail_page),  # 피드백
+
 
 ]

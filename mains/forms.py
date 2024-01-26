@@ -31,3 +31,13 @@ class clip_regist_form(forms.ModelForm):
             'kirinuky_title':'키리누키(클립) 제목',
             'kirinuky_day':'방송 일자',
         }
+
+class requests_form(forms.ModelForm):
+    class Meta:
+        model = models.requests
+
+        fields = [
+            'requests_con']
+        labels = {
+            'requests_con': '요청 내용'
+        }

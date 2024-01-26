@@ -4,6 +4,9 @@ let months = document.querySelector('#months').value;
 let day = document.querySelector('#day').value;
 let stella = document.querySelector('#stella').value;
 
+// hidden input에서 방송한 날들에 대한 정보 받기
+let bangsong_days = document.querySelector('#bangsong_day').value;
+
 // 가져온 정보로 해당 월의 마지막날 찾기
 let lastDateofMonth = new Date(year,months,0).getDate();
 
@@ -23,14 +26,21 @@ let daysTag = document.querySelector('.days');
 
 /////////////////////// 이벤트와 메소드 구현 부분 /////////////////////
 // 캘린더 그리기
+
 const renderCalendar = () => {
     let li = '';
+    let bangsong_list = JSON.parse(bangsong_days);
     for (let i = firstDayofMonth; i > 0; i--) {
         li += `<li class = "inactive daaay before_month">${lastDateofLastMonth - i + 1}</li>`;
     }
 
     for (let i = 1; i <= lastDateofMonth; i++) {
-        li += `<li class = "actives daaay">${i}</li>`;
+        if (bangsong_list.includes(i)){
+            li += `<li class = "actives daaay bangsong_day">${i}</li>`;
+        }
+        else{
+            li += `<li class = "actives daaay">${i}</li>`;
+        }
 	}
 
     for (let i = lastDayofMonth; i < 6; i++) {
@@ -139,8 +149,6 @@ const daySelect = () => {
         day_list[i].addEventListener('click',() => dayMove(month_data,day_list[i].innerHTML));
     }
 }
-
-
 
 ////////////////// 이벤트 호출 및 등록하는 부분 /////////////////
 renderCalendar();

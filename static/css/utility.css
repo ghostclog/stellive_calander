@@ -56,6 +56,10 @@
     cursor: pointer;
 }
 
+.footer-item a{
+    color: inherit;
+}
+
 #copyright{
     position: relative;
     float: left;
