@@ -10,27 +10,34 @@
         <form method="post" action="{% url 'add' category='reply' %}">
             <div id="form-area">
                 <div id = "data-input-area">
-                    <label for="{{ form.stella.id_for_label }}">
-                        <div>
-                            스텔라 이름
-                            {{ form.stella }}
-                        </div>
-                    </label>
-                    <br>
+                    <div class="reply_input_area">
+                        <label for="{{ form.stella.id_for_label }}">
+                            <p id="stella_name_text">
+                                스텔라 이름
+                            </p>  
+                                {{ form.stella }}
+                        </label> 
+                    </div>
+                <br>
+                <div class="reply_input_area">
                     <label for="{{ form.replay_link.id_for_label }}">
                         <div>
                             다시보기 링크
-                        {{ form.replay_link }}
+                            {{ form.replay_link }}
                         </div>
                     </label>
-                    <br>
+                </div>
+                <br>
+                <div class="reply_input_area" id="div1">
                     <label for="{{ form.replay_day.id_for_label }}">
                         <div>
                             방송 일자
                         {{ form.replay_day }}
                         </div>
                     </label>
-                    <br>
+                </div>
+                <br>
+                <div class="reply_input_area" id="div2">
                     <label for="{{ form.replay_contents.id_for_label }}">
                         <div>
                             방송 내용
@@ -38,29 +45,33 @@
                         </div>
                     </label>
                 </div>
+            </div>
+            <button class = "regist" id ="regist1" type="submit">등록하기!</button>
         {% endif %}
 
         {% if category == 'clip' %}
         <form method="post" action="{% url 'add' category='clip' %}">
             <div id="form-area">
-                <label>
-                    <input type="checkbox" name="stellas" value="아이리 칸나"> 칸나
-                </label>
-                <label>
-                    <input type="checkbox" name="stellas" value="아야츠노 유니"> 유니
-                </label>
-                <label>
-                    <input type="checkbox" name="stellas" value="네네코 마시로"> 마시로
-                </label>
-                <label>
-                    <input type="checkbox" name="stellas" value="시라유키 히나"> 히나
-                </label>
-                <label>
-                    <input type="checkbox" name="stellas" value="아카네 리제"> 리제
-                </label>
-                <label>
-                    <input type="checkbox" name="stellas" value="아라하시 타비"> 타비
-                </label>
+                <div id="checkbox_area">
+                    <label>
+                        <input type="checkbox" name="stellas" value="아이리 칸나"> 칸나
+                    </label>
+                    <label>
+                        <input type="checkbox" name="stellas" value="아야츠노 유니"> 유니
+                    </label>
+                    <label>
+                        <input type="checkbox" name="stellas" value="네네코 마시로"> 마시로
+                    </label>
+                    <label>
+                        <input type="checkbox" name="stellas" value="시라유키 히나"> 히나
+                    </label>
+                    <label>
+                        <input type="checkbox" name="stellas" value="아카네 리제"> 리제
+                    </label>
+                    <label>
+                        <input type="checkbox" name="stellas" value="아라하시 타비"> 타비
+                    </label>
+                </div>
                 <div id = "data-input-area"> 
                     <label for="{{ form.kirinuky_link.id_for_label }}">
                         키리누키(클립) 링크<br>
@@ -77,9 +88,10 @@
                         {{ form.kirinuky_day }}
                     </label>
                 </div>
+                <button class = "regist" id ="regist2" type="submit">등록하기!</button>
         {% endif %}
             {% csrf_token %}
-                <button type="submit">등록하기!</button>
+                
             </div>
         </form>
     </div>

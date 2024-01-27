@@ -10,6 +10,7 @@ window.onload = function() {
 // 모달 열기 버튼 클릭 시 이벤트 처리
 document.getElementById('add-data').addEventListener('click', function () {
     document.getElementById('clip-Modal').style.display = 'block';
+    document.getElementById('modal-back').style.display = 'block';
   });
   
   // 선택지 1 클릭 시 이벤트 처리
@@ -24,5 +25,6 @@ document.getElementById('add-data').addEventListener('click', function () {
 
   document.getElementById('option3').addEventListener('click', function () {
     document.getElementById('clip-Modal').style.display = 'none';
+    document.getElementById('modal-back').style.display = 'none';
   });
   
