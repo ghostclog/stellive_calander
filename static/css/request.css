@@ -1,0 +1,16 @@
+#requests-area{
+    position: relative;
+    left: 25%;
+    width: 50%;
+    top: 50px;
+}
+
+#requests-area div{
+    margin-bottom: 10px;
+}
+
+#id_requests_con{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}

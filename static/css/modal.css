@@ -57,6 +57,7 @@
 .modal-content button{
     width: 70px;
     height: 25px;
+    border-radius: 3px;
 }
 
 .modal-content #option1:hover{
