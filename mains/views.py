@@ -7,16 +7,18 @@ from . import models,forms
 # 메인 페이지1(스텔라 선택 전.)
 def main_page(request):
     if request.method == "GET":
+        # 현재 날짜 정보
         current_datetime = datetime.now()
+        # 날짜 포멧팅
         formatted_date = current_datetime.strftime('%B %Y')
+        # 선택한 날짜와 오시가 없기에 현재 날짜에 대한 정보를 반환
         return render(request,"page.html",{
             'string_date' : formatted_date,
             'for_calander_date' : [
                 current_datetime.year,
                 current_datetime.month,
                 current_datetime.day
-            ]
-                                           })
+            ]})
     
 # 메인 페이지2(스텔라 선택 후. 캘린더는 최신 연월로 설정 / 캘린더에 방송 한 날짜 굵게 표시)
 def stella_default_page(request,stella):
@@ -33,19 +35,13 @@ def stella_date_page(request,stella,date):
         # 날짜 정보
         year = int(date[0:4])
         month = int(date[4:])
-
-        try: # 연 월 데이터 잘못 입력시
-            formatted_date = datetime(year, month, 1).strftime('%B %Y')
-        except:
-            request.session['error_message'] = '입력하신 날짜값이 잘못 되었습니다.'
-            return redirect("/")
+        formatted_date = datetime(year, month, 1).strftime('%B %Y')
 
         try:
             # stella변수. 코드에서 이름으로 변환 / 스텔라 이름 잘못 입력시
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
-            return redirect("/")
+            stella_name = "404NotFound"
         
         bangsong_day = list(models.Replay.objects.filter(
             stella = stella_name, 
