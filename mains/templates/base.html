@@ -36,6 +36,9 @@
     <link href="{% static 'css/request.css' %}" rel="stylesheet" type="text/css" />
     <!-- 요청사항 css -->
 
+    <link href="{% static 'css/error.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 에러페이지 css -->
+
     {{ stella|default:"not_select" }}
 
     {% if stella == 'kanna'%}
@@ -90,8 +93,11 @@
         </div>
         <div id="utility">
             <div id="utility-area">
-                <div class="utility-item" id="add-data">
-                    추가하기
+                <div class="utility-item" id="add-reply">
+                    다시보기
+                </div>
+                <div class="utility-item" id="add-kiri">
+                    키리누키
                 </div>
             </div>
         </div>
@@ -108,16 +114,6 @@
                 <a href="/requests">요청사항</a>
             </div>
         </div>
-    </div>
-    <div id="modal-back">
-        <div id="clip-Modal" class="modal">
-            <div class="modal-content">
-                <p>등록하실 영상을 선택하세요</p>
-                <button id="option1">다시보기</button>
-                <button id="option2">키리누키</button>
-                <button id="option3">닫기</button>
-            </div>
-          </div>
     </div>
     <script src="{% static 'js/etc.js' %}"></script>
 </body>

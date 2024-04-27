@@ -11,6 +11,9 @@ urlpatterns = [
     path('add/<str:category>', views.add_page,name='add'),  # 키리누키 및 다시보기 정보 추가
     path('requests', views.requests),  # 요청사항
     path('feedback', views.stella_detail_page),  # 피드백
-
-
+    
+    path('errorpage', views.error_page),  # 피드백
 ]
+
+handler404 = 'mains.views.custom_page_not_found_view'
+handler500 = 'mains.views.custom_error_view'

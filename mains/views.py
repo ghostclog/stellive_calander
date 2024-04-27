@@ -35,13 +35,11 @@ def stella_date_page(request,stella,date):
         # 날짜 정보
         year = int(date[0:4])
         month = int(date[4:])
-        formatted_date = datetime(year, month, 1).strftime('%B %Y')
-
         try:
-            # stella변수. 코드에서 이름으로 변환 / 스텔라 이름 잘못 입력시
+            formatted_date = datetime(year, month, 1).strftime('%B %Y')
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            stella_name = "404NotFound"
+            return redirect("/errorpage/")
         
         bangsong_day = list(models.Replay.objects.filter(
             stella = stella_name, 
@@ -72,17 +70,16 @@ def stella_detail_page(request,stella,date,day):
         year = int(date[0:4])
         month = int(date[4:])
         date_data = str(year) + " / " + str(month).zfill(2) +" / " + str(day).zfill(2)
-        formatted_date = datetime(year, month, 1).strftime('%B %Y')
         
         # 변수 초기화
         contents = ""
 
         try:
+            formatted_date = datetime(year, month, 1).strftime('%B %Y')
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
-            return redirect("/")
+            return redirect("/errorpage/")
 
         # 키리누키(클립) 데이터(갯수) 불러오기
         kirinuky_data = models.kirinuky.objects.filter(
@@ -125,6 +122,11 @@ def stella_detail_page(request,stella,date,day):
                             'for_calander_date':[year,month,day],
                             'bangsong_day' : bangsong_day})
     
+
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+    
 # 다시보기 및 클립 보기
 def vedios(request,stella,date,day):
     if request.method == "GET":
@@ -132,8 +134,7 @@ def vedios(request,stella,date,day):
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            request.session['error_message'] = '해당하는 스텔라의 이름이 존재하지 않습니다.'
-            return redirect("/")
+            return redirect("/errorpage/")
 
         year = int(date[0:4])
         month = int(date[4:])
@@ -161,6 +162,10 @@ def vedios(request,stella,date,day):
             'reply_date' : reply_date,
             'kirinuky_data' : kirinuky_data,
         })
+
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
 
 # 클립 및 다시보기 추가하는 사이트
 def add_page(request,category):
@@ -208,6 +213,10 @@ def add_page(request,category):
                 reply_instance.save()
                 return redirect("/")
             
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+
 def requests(request):
     if request.method == "GET":
         form = forms.requests_form()
@@ -220,5 +229,20 @@ def requests(request):
         data_model.requests_category = category
         data_model.save()
         return redirect("/")
+    
 
 
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+####################################################################################################################################################################################################################
+
+
+# 에러 발생시 처리
+def custom_page_not_found_view(request, exception):
+    return redirect("/errorpage/")
+
+def custom_error_view(request):
+    return redirect("/errorpage/")
+
+def error_page(request):
+    return render(request, "error.html", {})

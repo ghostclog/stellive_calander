@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+    <div id="for-margin">
+    </div>
+    <div id="contents">
+        <div id="contents-area">
+            <div id="big-message-area">
+                <div class="error-message">
+                    <p class="error-messages">
+                        에러가 발생했습니다!
+                        <img calss="error-image" src="{% static 'images/errors/maroggamnull.png' %}" alt="">
+                    </p>
+                    
+                </div>
+                <div class="error-message">
+                    <p class="error-messages">
+                        잘못 접근하신거같아요.
+                        <img calss="error-image" src="{% static 'images/errors/nununchui.png' %}" alt="">
+                    </p>
+                    <p class="error-messages">
+                        좌측 상단의 아이콘을 사용해서 돌아가주세요.    
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
