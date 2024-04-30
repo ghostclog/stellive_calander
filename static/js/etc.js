@@ -8,8 +8,6 @@
     window.location.href = '/add/clip';
   });
 
-  document.getElementById('option3').addEventListener('click', function () {
-    document.getElementById('clip-Modal').style.display = 'none';
-    document.getElementById('modal-back').style.display = 'none';
+  document.getElementById('logo').addEventListener('click', function () {
+    window.location.href = '/';
   });
-  

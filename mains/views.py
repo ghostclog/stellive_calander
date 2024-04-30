@@ -39,7 +39,7 @@ def stella_date_page(request,stella,date):
             formatted_date = datetime(year, month, 1).strftime('%B %Y')
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/errorpage/")
+            return redirect("/errorpage")
         
         bangsong_day = list(models.Replay.objects.filter(
             stella = stella_name, 
@@ -79,7 +79,7 @@ def stella_detail_page(request,stella,date,day):
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/errorpage/")
+            return redirect("/errorpage")
 
         # 키리누키(클립) 데이터(갯수) 불러오기
         kirinuky_data = models.kirinuky.objects.filter(
@@ -134,7 +134,7 @@ def vedios(request,stella,date,day):
             # stella변수. 코드에서 이름으로 변환
             stella_name = models.Stellas.objects.get(stella_name_code = stella)
         except:
-            return redirect("/errorpage/")
+            return redirect("/errorpage")
 
         year = int(date[0:4])
         month = int(date[4:])
@@ -239,10 +239,10 @@ def requests(request):
 
 # 에러 발생시 처리
 def custom_page_not_found_view(request, exception):
-    return redirect("/errorpage/")
+    return redirect("/errorpage")
 
 def custom_error_view(request):
-    return redirect("/errorpage/")
+    return redirect("/errorpage")
 
 def error_page(request):
     return render(request, "error.html", {})
