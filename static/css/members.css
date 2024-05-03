@@ -78,3 +78,13 @@
     color: white;
     font-weight: bold;
 }
+
+.split-line {
+    margin-top: 20px;
+    margin-right: 24px;
+    position: relative;
+    height: 40px;
+    float: left;
+    border-right: 1px solid rgb(214, 214, 214);
+    padding: 0px;
+}
