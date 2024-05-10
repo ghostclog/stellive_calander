@@ -6,8 +6,9 @@
     <div id="page-area">
         <!-- 다시보기 -->
         {% for reply in reply_date %}
-            <div id="reply-area">
-                <div id="reply-vedio">
+        <div class="big-reply-area">
+            <div class="reply-area">
+                <div class="reply-vedio">
                     <iframe class = "vedio" src="https://{{ reply.replay_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
                 </div>
             </div>
@@ -16,7 +17,9 @@
                 <br><p class="sangse-data">- 스텔라: {{ stella }} </p>
                 <br><p class="sangse-data">- 방송 내용: {{ reply.replay_contents }} </p>
             </div>
+        </div>
         {% endfor %}
+        
         <!-- 클립 -->
         <div id="clip-area">
             <div class="clips">
