@@ -157,7 +157,7 @@ def vedios(request,stella,date,day):
             return redirect("/mains/"+stella+"/"+date+"/"+day)
 
         return render(request,"view.html",{
-            'stella': stella,
+            'stella': stella_name,
             'total_date_data' : date_data,
             'reply_date' : reply_date,
             'kirinuky_data' : kirinuky_data,
@@ -166,6 +166,23 @@ def vedios(request,stella,date,day):
 ####################################################################################################################################################################################################################
 ####################################################################################################################################################################################################################
 ####################################################################################################################################################################################################################
+
+# 링크 양식 구분 및 영상 아이디값 추출를 위한 함수
+def get_link(url):
+    url1 = url
+    url4= ""
+    pattern1 = "www.youtube.com/"
+    pattern2 = "youtu.be/"           
+    if pattern1 in url1:
+        url2 = url1.split('?v=')
+        url3 = url2[1].split('&')
+        url4 = "www.youtube.com/embed/" + url3[0]
+    elif pattern2 in url1:
+        url2 = url1.split('youtu.be/')
+        url3 = url2[1].split('?')
+        url4 = "www.youtube.com/embed/" + url3[0]
+    return url4
+
 
 # 클립 및 다시보기 추가하는 사이트
 def add_page(request,category):
@@ -185,31 +202,19 @@ def add_page(request,category):
             stella_list = ", ".join(stellas)
             form = forms.clip_regist_form(request.POST)
             if form.is_valid():
-                # 링크의 아이디값 추출
-                url1 = form.cleaned_data['kirinuky_link']
-                url2 = url1.split('?v=')
-                url3 = url2[1].split('&')
-                url4 = "www.youtube.com/embed/" + url3[0]
-
+                url = get_link(form.cleaned_data['kirinuky_link'])
                 clip_instance = form.save(commit=False)
                 clip_instance.kirinuky_stella = stella_list
-                clip_instance.kirinuky_link = url4
-                
+                clip_instance.kirinuky_link = url
                 clip_instance.save()
                 return redirect("/")
             
         if category == "reply":
             form = forms.reply_regist_form(request.POST)
             if form.is_valid():
-
-                # 링크의 아이디값 추출
-                url1 = form.cleaned_data['replay_link']
-                url2 = url1.split('?v=')
-                url3 = url2[1].split('&')
-                url4 = "www.youtube.com/embed/" + url3[0]
-
+                url = get_link(form.cleaned_data['replay_link'])
                 reply_instance = form.save(commit=False)
-                reply_instance.replay_link = url4
+                reply_instance.replay_link = url
                 reply_instance.save()
                 return redirect("/")
             
