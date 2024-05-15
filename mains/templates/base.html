@@ -45,6 +45,7 @@
         <link href="{% static 'css/focus/kanna.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'yuni'%}
         <link href="{% static 'css/focus/yuni.css' %}" rel="stylesheet" type="text/css" />
+
     {% elif stella == 'shiro'%}
         <link href="{% static 'css/focus/shiro.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'hina'%}
@@ -53,6 +54,15 @@
         <link href="{% static 'css/focus/lize.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'tabi'%}
         <link href="{% static 'css/focus/tabi.css' %}" rel="stylesheet" type="text/css" />
+
+    {% elif stella == 'shibuki'%}
+        <link href="{% static 'css/focus/shibuki.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'rin'%}
+        <link href="{% static 'css/focus/rin.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'nana'%}
+        <link href="{% static 'css/focus/nana.css' %}" rel="stylesheet" type="text/css" />
+    {% elif stella == 'riko'%}
+        <link href="{% static 'css/focus/riko.css' %}" rel="stylesheet" type="text/css" />
     {% endif %}
 
 <title>Stellive BangSong Calender</title>
@@ -98,6 +108,26 @@
             <div class = "split-line">
             </div>
 
+            <div class="member" id="shibuki">
+                <img src="{% static 'images/shibukiHeart.png' %}" alt="">
+                시부키
+            </div> 
+            <div class="member" id="rin">
+                <img src="{% static 'images/rinHeart.png' %}" alt="">
+                린
+            </div> 
+            <div class="member" id="nana">
+                <img src="{% static 'images/nanaHeart.png' %}" alt="">
+                나나
+            </div> 
+            <div class="member" id="riko">
+                <img src="{% static 'images/rikoHeart.png' %}" alt="">
+                리코
+            </div> 
+
+
+
+
             <script src="{% static 'js/members.js' %}"></script>
         </div>
         <div id="utility">
@@ -117,7 +147,7 @@
     <div id="footer">
         <div id="footer-area">
             <div id="copyright">
-                made by maro(<a href="https://github.com/ghostclog">길잃은유령개</a>) / <a href="https://github.com/ghostclog/stellive_calander">해당 프로잭트 레포지토리로 가기</a>
+                made by maro(<a href="https://github.com/ghostclog">길잃은유령개</a>) / <a href="https://github.com/ghostclog/stellive_calander">프로잭트 레포지토리</a>
             </div>
             <div class="footer-item">
                 <a href="/requests">요청사항</a>
