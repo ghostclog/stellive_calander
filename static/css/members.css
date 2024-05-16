@@ -79,6 +79,27 @@
     font-weight: bold;
 }
 
+#shibuki:hover{
+    background-color:#8672A6;
+    color: white;
+    font-weight: bold;
+}
+#rin:hover{
+    background-color: #56AAFC;
+    color: white;
+    font-weight: bold;
+}
+#nana:hover{
+    background-color: #DF7685;
+    color: white;
+    font-weight: bold;
+}
+#riko:hover{
+    background-color:#A6D0A6;
+    color: white;
+    font-weight: bold;
+}
+
 .split-line {
     margin-top: 20px;
     margin-right: 24px;

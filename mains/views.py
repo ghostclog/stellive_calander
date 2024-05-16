@@ -107,7 +107,7 @@ def stella_detail_page(request,stella,date,day):
             datas = []
             for i in bangsong_data_list:
                 datas.append(i.replay_contents)
-            contents = ", ".join(datas)
+            contents = " / ".join(datas)
         else:
             contents = "해당하는 날짜에 대한 데이터가 없습니다."
 

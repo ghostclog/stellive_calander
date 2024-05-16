@@ -1,0 +1,19 @@
+#nana{
+    background-color: #DF7685;
+    color: white;
+    font-weight: bold;
+    cursor:auto;
+    transform: scale(1.2);
+}
+
+#nana:hover{
+    transform: scale(1.2);
+}
+
+#nana img{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    display: inline;
+}

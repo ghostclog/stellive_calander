@@ -1,0 +1,19 @@
+#riko{
+    background-color: #A6D0A6;
+    color: white;
+    font-weight: bold;
+    cursor:auto;
+    transform: scale(1.2);
+}
+
+#riko:hover{
+    transform: scale(1.2);
+}
+
+#riko img{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    display: inline;
+}
