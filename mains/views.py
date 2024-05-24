@@ -1,64 +1,93 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from datetime import datetime
-from . import models,forms
+from . import models, forms
 
-
-
-# 메인 페이지1(스텔라 선택 전.)
+# 메인 페이지 1 (스텔라 선택 전)
 def main_page(request):
+    """
+    스텔라 선택 전 메인 페이지를 보여줍니다.
+    현재 날짜 정보를 기반으로 렌더링합니다.
+
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+    """
     if request.method == "GET":
-        # 현재 날짜 정보
-        current_datetime = datetime.now()
-        # 날짜 포멧팅
-        formatted_date = current_datetime.strftime('%B %Y')
-        # 선택한 날짜와 오시가 없기에 현재 날짜에 대한 정보를 반환
-        return render(request,"page.html",{
-            'string_date' : formatted_date,
-            'for_calander_date' : [
+        current_datetime = datetime.now()  # 현재 날짜 및 시간
+        formatted_date = current_datetime.strftime('%B %Y')  # 월(영문) 연도 형식으로 포맷
+        return render(request, "page.html", {
+            'string_date': formatted_date,
+            'for_calander_date': [
                 current_datetime.year,
                 current_datetime.month,
                 current_datetime.day
             ]})
-    
-# 메인 페이지2(스텔라 선택 후. 캘린더는 최신 연월로 설정 / 캘린더에 방송 한 날짜 굵게 표시)
-def stella_default_page(request,stella):
+
+# 메인 페이지 2 (스텔라 선택 후, 최신 연월 캘린더)
+def stella_default_page(request, stella):
+    """
+    스텔라 선택 후 기본 메인 페이지로 리디렉션합니다.
+    최신 연월을 기준으로 캘린더 페이지로 이동합니다.
+
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+        stella (str): 선택된 스텔라 이름 코드
+    """
     if request.method == "GET":
         year = str(datetime.now().year)
         month = str(datetime.now().month)
-        redirect_url = "/mains/" + stella + "/" + year + month.zfill(2)
-
+        redirect_url = f"/mains/{stella}/{year}{month.zfill(2)}"  # 최신 연월 캘린더 페이지 URL
         return redirect(redirect_url)
 
-# 메인 페이지3(스텔라 선택. 연월 선택 시 / 캘린더에 방송 한 날짜 굵게 표시)
-def stella_date_page(request,stella,date):
+# 메인 페이지 3 (스텔라 및 연월 선택, 캘린더)
+def stella_date_page(request, stella, date):
+    """
+    특정 스텔라와 연월을 선택한 메인 페이지를 보여줍니다.
+    해당 스텔라의 방송 날짜를 캘린더에 표시합니다.
+
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+        stella (str): 선택된 스텔라 이름 코드
+        date (str): 선택된 연월 (YYYYMM 형식)
+    """
     if request.method == "GET":
-        # 날짜 정보
         year = int(date[0:4])
         month = int(date[4:])
         try:
-            formatted_date = datetime(year, month, 1).strftime('%B %Y')
-            stella_name = models.Stellas.objects.get(stella_name_code = stella)
-        except:
+            formatted_date = datetime(year, month, 1).strftime('%B %Y')  # 월(영문) 연도 형식
+            stella_name = models.Stellas.objects.get(stella_name_code=stella)  # 스텔라 객체 조회
+        except models.Stellas.DoesNotExist:  # 스텔라가 존재하지 않을 경우
             return redirect("/errorpage")
-        
+
         bangsong_day = list(models.Replay.objects.filter(
-            stella = stella_name, 
-            replay_day__year = year, 
-            replay_day__month = month).values_list('replay_day__day', flat=True))
+            stella=stella_name,
+            replay_day__year=year,
+            replay_day__month=month
+        ).values_list('replay_day__day', flat=True))  # 방송 날짜 목록
 
+        return render(request, "members.html", {
+            'stella': stella,
+            'string_date': formatted_date,
+            'stella_name': stella_name,
+            'total_date_data': "아직 날짜가 설정되지 않았습니다.",  # 상세 날짜 정보 (초기값)
+            'contents': "아직 날짜가 설정되지 않았습니다.",        # 방송 내용 (초기값)
+            'clips': "아직 날짜가 설정되지 않았습니다.",          # 클립 개수 (초기값)
+            'for_calander_date': [year, month, 0],                  # 캘린더 표시 날짜
+            'bangsong_day': bangsong_day                            # 방송 날짜 목록
+        })
 
-        return render(request,"members.html",
-                      { 'stella': stella,
-                        'string_date' : formatted_date,
-                        'stella_name' : stella_name,
-                        'total_date_data' : "아직 날짜가 설정되지 않았습니다.",
-                        'contents' : "아직 날짜가 설정되지 않았습니다.",
-                        'clips' : "아직 날짜가 설정되지 않았습니다.",
-                        'for_calander_date':[year,month,0],
-                        'bangsong_day' : bangsong_day})
-    
-# 메인 페이지3(날짜 선택 / 캘린더에 방송 한 날짜 굵게 표시 + 정보창에 정보 띄우기)
-def stella_detail_page(request,stella,date,day):
+# 메인 페이지 4 (스텔라, 연월, 일자 선택, 상세 정보)
+def stella_detail_page(request, stella, date, day):
+    """
+    특정 스텔라, 연월, 일자를 선택한 상세 페이지를 보여줍니다.
+    해당 날짜의 방송 정보, 클립 개수 등을 표시합니다.
+
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+        stella (str): 선택된 스텔라 이름 코드
+        date (str): 선택된 연월 (YYYYMM 형식)
+        day (int): 선택된 일자
+    """
+
     if request.method == "GET":
 
         # 일자를 잘못 입력 한 경우.
@@ -122,9 +151,6 @@ def stella_detail_page(request,stella,date,day):
                             'for_calander_date':[year,month,day],
                             'bangsong_day' : bangsong_day})
     
-
-####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
 ####################################################################################################################################################################################################################
     
 # 다시보기 및 클립 보기
@@ -164,83 +190,127 @@ def vedios(request,stella,date,day):
         })
 
 ####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
 
 # 링크 양식 구분 및 영상 아이디값 추출를 위한 함수
-def get_link(url):
-    url1 = url
-    url4= ""
-    pattern1 = "www.youtube.com/"
-    pattern2 = "youtu.be/"           
-    if pattern1 in url1:
+# 유튜브 링크에서 임베드 링크 추출
+def get_link(url, category):  
+    """
+    유튜브 링크(url)를 받아 임베드 링크를 반환합니다.
+    데이터베이스에 이미 존재하는 링크인 경우 None을 반환합니다.
+
+    Args:
+        url (str): 유튜브 링크 (일반 또는 단축 링크)
+        category (str): 링크 종류 ("clip" 또는 "reply")
+
+    Returns:
+        str or None: 임베드 링크 또는 None (이미 존재하는 경우)
+    """
+
+    url1 = url  # 원본 URL 저장
+    url4 = ""  # 추출할 임베드 URL 초기화
+    pattern1 = "www.youtube.com/"  # 일반 유튜브 링크 패턴
+    pattern2 = "youtu.be/"       # 단축 유튜브 링크 패턴
+
+    if pattern1 in url1:  # 일반 유튜브 링크 처리
         url2 = url1.split('?v=')
         url3 = url2[1].split('&')
         url4 = "www.youtube.com/embed/" + url3[0]
-    elif pattern2 in url1:
+    elif pattern2 in url1:  # 단축 유튜브 링크 처리
         url2 = url1.split('youtu.be/')
         url3 = url2[1].split('?')
         url4 = "www.youtube.com/embed/" + url3[0]
-    return url4
+
+    # 데이터베이스 조회 (중복 링크 확인)
+    if category == "clip":
+        exists = models.kirinuky.objects.filter(kirinuky_link=url4).exists()
+    elif category == "reply":
+        exists = models.Replay.objects.filter(replay_link=url4).exists()
+
+    if exists:  # 이미 존재하는 링크인 경우
+        return None  
+    else:  # 새로운 링크인 경우
+        return url4
 
 
-# 클립 및 다시보기 추가하는 사이트
-def add_page(request,category):
-    # 사이트 입장
+# 클립 및 다시보기 추가 페이지 처리
+def add_page(request, category):
+    """
+    클립 또는 다시보기 추가 페이지를 처리하는 뷰 함수입니다.
+
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+        category (str): 페이지 종류 ("clip" 또는 "reply")
+    """
+
+    # GET 요청: 페이지 표시
     if request.method == "GET":
         form = None
         if category == "clip":
             form = forms.clip_regist_form()
         if category == "reply":
             form = forms.reply_regist_form()
-        return render(request,"add.html",{'form' : form,'category':category})
-   
-    # 데이터 등록
+        return render(request, "add.html", {'form': form, 'category': category})
+
+    # POST 요청: 데이터 등록
     if request.method == "POST":
+
         if category == "clip":
             stellas = request.POST.getlist('stellas')
             stella_list = ", ".join(stellas)
             form = forms.clip_regist_form(request.POST)
             if form.is_valid():
-                url = get_link(form.cleaned_data['kirinuky_link'])
+                url = get_link(form.cleaned_data['kirinuky_link'], category)  # 링크 추출 및 중복 확인
+                if url is None:  # 이미 존재하는 링크 처리
+                    return redirect("/")
+                
                 clip_instance = form.save(commit=False)
                 clip_instance.kirinuky_stella = stella_list
                 clip_instance.kirinuky_link = url
                 clip_instance.save()
                 return redirect("/")
-            
+
         if category == "reply":
             form = forms.reply_regist_form(request.POST)
             if form.is_valid():
-                url = get_link(form.cleaned_data['replay_link'])
+                url = get_link(form.cleaned_data['replay_link'], category)  # 링크 추출 및 중복 확인
+                if url is None:  # 이미 존재하는 링크 처리
+                    return redirect("/")
+                
                 reply_instance = form.save(commit=False)
-                reply_instance.replay_link = url
+                reply_instance.rplay_link = url
                 reply_instance.save()
                 return redirect("/")
             
 ####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
 
+# 사용자 요청사항 처리
 def requests(request):
-    if request.method == "GET":
-        form = forms.requests_form()
-        return render(request,"requests.html",{'form':form})
+    """
+    사용자 요청사항 페이지를 처리하는 뷰 함수입니다.
 
-    if request.method == "POST":
-        form = forms.requests_form(request.POST)
-        category = request.POST.get('category')
-        data_model = form.save(commit=False)
-        data_model.requests_category = category
-        data_model.save()
-        return redirect("/")
-    
+    GET 요청: 요청사항 입력 폼을 보여줍니다.
+    POST 요청: 제출된 요청사항을 데이터베이스에 저장하고 메인 페이지로 리디렉션합니다.
 
+    Args:
+        request (HttpRequest): HTTP 요청 객체
+    """
+    if request.method == "GET":  # GET 요청 처리
+        form = forms.requests_form()  # 요청사항 입력 폼 생성
+        return render(request, "requests.html", {'form': form})  # 폼을 포함하여 페이지 렌더링
+
+    if request.method == "POST":  # POST 요청 처리 (요청사항 제출)
+        form = forms.requests_form(request.POST)  # 제출된 데이터로 폼 객체 생성
+        if form.is_valid():  # 유효성 검사
+            category = request.POST.get('category')  # 요청 유형 (카테고리) 가져오기
+            data_model = form.save(commit=False)  # 모델 객체 생성 (아직 저장하지 않음)
+            data_model.requests_category = category  # 요청 유형 설정
+            data_model.save()  # 데이터베이스에 저장
+            return redirect("/")
+        else:
+            # 유효성 검사 실패 시 처리 (오류 메시지 표시 등)
+            return render(request, "requests.html", {'form': form}) 
 
 ####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
-####################################################################################################################################################################################################################
-
 
 # 에러 발생시 처리
 def custom_page_not_found_view(request, exception):

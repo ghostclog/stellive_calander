@@ -34,11 +34,12 @@
                     </ul>
                 </div>
             </div>
+            <input type="hidden" id="current-url" name="current-url">
             <input type="hidden" id="year" name="year" value = "{{ for_calander_date.0 }}">
-                <input type="hidden" id="months" name="months" value = "{{ for_calander_date.1 }}">
-                <input type="hidden" id="day" name="day" value = "{{ for_calander_date.2 }}">
-                <input type="hidden" id="stella" name="stella" value = "not_select">
-                <input type="hidden" id="bangsong_day" name="bangsong_day" value = "[0,0]">
+            <input type="hidden" id="months" name="months" value = "{{ for_calander_date.1 }}">
+            <input type="hidden" id="day" name="day" value = "{{ for_calander_date.2 }}">
+            <input type="hidden" id="stella" name="stella" value = "not_select">
+            <input type="hidden" id="bangsong_day" name="bangsong_day" value = "[0,0]">
             <script src="{% static 'js/calander.js' %}"></script>
             <div id="data-area">
                 <div id="how-to-use">
@@ -53,6 +54,9 @@
                     </div>
                     <div class="sub">
                         3. 여기서 굵게 표시된 날짜는 방송을 한 날!
+                    </div>
+                    <div class="sub">
+                        !!! 몇몇 영상들은 저작권 빔을 맞아서 없습니다. !!!
                     </div>
                 </div>
             </div>
