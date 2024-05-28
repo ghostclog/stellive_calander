@@ -1,14 +1,14 @@
 #form-area{
     position: relative;
     top: 10%;
-    left: 20%;
+    left: 30%;
     width: 60%;
     height: 80%;
 }
 
 .reply_input_area{
     
-    width: 60%;
+    width: 70%;
     height: 100px;
 }
 
@@ -17,23 +17,33 @@
     left: 0px;
     float: left;
     margin: 0;
+    margin-right: 10px;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 #id_stella{
     position: relative;
     left: 10px;
-    width: 150px;
+    width: 250px;
     border-radius: 7px;
     border: 2px solid;
-    height: 25px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 550;
 }
 
 #id_replay_link{
     position: relative;
-    width: 70%;
+    width: 60%;
     height: 21px;
     border-radius: 8px;
     border: 2px solid;
+    
+}
+
+#data-input-area div{
+    font-size: 26px;
 }
 
 #id_replay_day{

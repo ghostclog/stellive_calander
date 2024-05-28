@@ -11,6 +11,9 @@
     top: 0;
 }
 
+#tap div{
+    font-size: 18px ;
+}
 
 #members{
    position: relative;
