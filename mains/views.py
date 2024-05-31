@@ -219,6 +219,8 @@ def get_link(url, category):
         url2 = url1.split('youtu.be/')
         url3 = url2[1].split('?')
         url4 = "www.youtube.com/embed/" + url3[0]
+    else:
+        return None
 
     # 데이터베이스 조회 (중복 링크 확인)
     if category == "clip":
