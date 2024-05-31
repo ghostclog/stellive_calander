@@ -59,7 +59,7 @@
                     <label>
                         <input type="checkbox" name="stellas" value="아야츠노 유니"> 유니
                     </label>
-
+                    <br>
                     <label>
                         <input type="checkbox" name="stellas" value="네네코 마시로"> 마시로
                     </label>
@@ -72,7 +72,7 @@
                     <label>
                         <input type="checkbox" name="stellas" value="아라하시 타비"> 타비
                     </label>
-
+                    <br>
                     <label>
                         <input type="checkbox" name="stellas" value="텐코 시부키"> 시부키
                     </label>
@@ -88,17 +88,17 @@
                 </div>
                 <div id = "data-input-area"> 
                     <label for="{{ form.kirinuky_link.id_for_label }}">
-                        키리누키(클립) 링크<br>
+                        <p class="kirinuky-p">키리누키(클립) 링크</p> <br>
                         {{ form.kirinuky_link }}
                     </label>
                     <br>
                     <label for="{{ form.kirinuky_title.id_for_label }}">
-                        키리누키(클립) 제목<br>
+                        <p class="kirinuky-p">키리누키(클립) 제목</p> <br>
                         {{ form.kirinuky_title  }}
                     </label>
                     <br>
                     <label for="{{ form.kirinuky_day.id_for_label }}">
-                        방송 일자<br>
+                        <p class="kirinuky-p">방송 일자</p><br>
                         {{ form.kirinuky_day }}
                     </label>
                 </div>

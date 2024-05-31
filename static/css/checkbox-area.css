@@ -42,6 +42,11 @@
     
 }
 
+#data-input-area{
+    width: 80%;
+    position: relative;
+}
+
 #data-input-area div{
     font-size: 26px;
 }
@@ -58,6 +63,8 @@
     height: 21px;
     border-radius: 7px;
     border: 2px solid;
+    font-size: 18px;
+    top: -25px;
 }
 
 #div1{
@@ -86,27 +93,43 @@
     justify-content: center; /* 가로 정렬 중앙으로 */
     align-items: center; /* 세로 정렬 중앙으로 */
     margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#checkbox_area input{
+    margin-left: 10px;
+    margin-right: 0px;
 }
 
 #id_kirinuky_link{
-    width: 90%;
-    margin-bottom: 20px;
+    position: relative;
+    width: 80%;
+    margin-bottom: 30px;
     height: 24px;
     border-radius: 12px;
-    border: 2px solid;
+    border: 3px solid;
+    font-size: 18px;
+    top: -25px;
 }
 
 #id_kirinuky_title{
-    width: 90%;
+    position: relative;
+    width: 80%;
     height: 100px;
     margin-bottom: 20px;
     border-radius: 12px;
-    border: 2px solid;
+    border: 3px solid;
+    font-size: 18px;
+    top: -25px;
 }
 
-#regist2{
+.kirinuky-p{
+    margin: 0px;
+    padding: 0px;
+    font-size: 26px;
     position: relative;
-    margin-top: 50px;
+    top: -10px;
 }
 
 .regist{
@@ -117,6 +140,8 @@
     transition: 0.2s ease-in-out;
     color: white;
     font-weight: bold;
+    font-size: 17px;
+    position: relative;
 }
 
 .regist:hover{
