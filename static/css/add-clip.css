@@ -1,0 +1,42 @@
+#checkbox_area{
+    justify-content: center; /* 가로 정렬 중앙으로 */
+    align-items: center; /* 세로 정렬 중앙으로 */
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#checkbox_area input{
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+#id_kirinuky_link{
+    position: relative;
+    width: 80%;
+    margin-bottom: 30px;
+    height: 24px;
+    border-radius: 12px;
+    border: 3px solid;
+    font-size: 18px;
+    top: -25px;
+}
+
+#id_kirinuky_title{
+    position: relative;
+    width: 80%;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 3px solid;
+    font-size: 18px;
+    top: -25px;
+}
+
+.kirinuky-p{
+    margin: 0px;
+    padding: 0px;
+    font-size: 26px;
+    position: relative;
+    top: -10px;
+}

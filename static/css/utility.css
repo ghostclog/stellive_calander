@@ -1,25 +1,9 @@
-#logo{
-    position: relative;
-    top: 10px;
-    left: 10px;
-    width: 60px;
-    height: 60px;
-    float: left;
-    cursor: pointer;
-}
-
-#logo img{
-    width: 100%;
-    height: 100%;
-}
-
-
-
 #utility{
-    position: relative;
+    position: fixed;
     width: 15%;
     height: 100%;
     float: left;
+    right: 0px;
 }
 
 #utility-area{
@@ -46,52 +30,4 @@
 
 .utility-item:hover{
     transform: scale(1.1);
-}
-
-
-
-#footer {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    top: 83px;
-    z-index: 1;
-  }
-
-#footer-area {
-    left: 15%;
-    width: 80%;
-    height: 100%;
-    top: 10px;
-    position: relative;
-}
-
-.footer-item{
-    position: relative;
-    float: left;
-    margin-left: 25px;
-    color: rgb(179, 179, 179);
-    cursor: pointer;
-}
-
-.footer-item a{
-    color: inherit;
-}
-
-#copyright{
-    position: relative;
-    float: left;
-    color: rgb(179, 179, 179);
-}
-
-#copyright a{
-    color: inherit;
-}
-
-.footer-item:hover{
-    color: rgb(216, 216, 216);
-}
-
-.footer-item:active{
-    color: rgb(245, 245, 245);
 }

@@ -112,3 +112,7 @@
     border-right: 1px solid rgb(214, 214, 214);
     padding: 0px;
 }
+
+#members{
+    list-style-type: none; /* 점 제거 */
+}

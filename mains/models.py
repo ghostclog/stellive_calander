@@ -5,9 +5,13 @@ from django.db import models
 class Stellas(models.Model):    # 있으면 편할거 같아서 추가함
     stella_name = models.CharField(primary_key=True,max_length=30)
     stella_name_code = models.CharField(max_length=30,null=True)
+    for_order = models.IntegerField(default=0)  # 정렬 순서 필드 추가
 
     def __str__(self):  # 스텔라 이름 반환
         return self.stella_name
+    
+    class Meta:
+        ordering = ['for_order']  # for_order 필드를 기준으로 정렬
 
 class Replay(models.Model):
     stella =  models.ForeignKey(Stellas, on_delete=models.CASCADE)  # 스텔라

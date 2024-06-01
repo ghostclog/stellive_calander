@@ -1,22 +1,24 @@
 {% load static %}
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
     <link href="{% static 'css/body.css' %}" rel="stylesheet" type="text/css" />
     <!--바디-->
 
     <link href="{% static 'css/members.css' %}" rel="stylesheet" type="text/css" />
-    <!--헤더1-->
+    <!--헤더1 맴버들 및 헤덭탭-->
 
     <link href="{% static 'css/utility.css' %}" rel="stylesheet" type="text/css" />
-    <!--헤더2-->
+    <!--해더2 등록버튼-->
+
+    <link href="{% static 'css/logo.css' %}" rel="stylesheet" type="text/css" />
+    <!--로고-->
+
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css" />
+    <!--푸터-->
 
     <link href="{% static 'css/calender.css' %}" rel="stylesheet" type="text/css" />
     <!--캘린더-->
@@ -24,14 +26,17 @@
     <link href="{% static 'css/data-area.css' %}" rel="stylesheet" type="text/css" />
     <!--데이터 보여주는거-->
 
-    <link href="{% static 'css/checkbox-area.css' %}" rel="stylesheet" type="text/css" />
-    <!--데이터 등록 css -->
+    <link href="{% static 'css/add.css' %}" rel="stylesheet" type="text/css" />
+    <!--데이터 등록 페이지 공통 사항 css -->
+
+    <link href="{% static 'css/add-clip.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 클립 등록 css -->
+
+    <link href="{% static 'css/add-reply.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 클립 등록 css -->
 
     <link href="{% static 'css/vedio-area.css' %}" rel="stylesheet" type="text/css" />
     <!-- 데이터 보기 css -->
-
-    <link href="{% static 'css/modal.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 모달창 css -->
 
     <link href="{% static 'css/request.css' %}" rel="stylesheet" type="text/css" />
     <!-- 요청사항 css -->
@@ -74,18 +79,22 @@
         </div>
         <div id="members">
 
-                <div class="member" id="kanna">
-                    <img src="{% static 'images/kannaHeart.png' %}" alt="">
-                    칸나
-                </div>
-                <div class="member" id="yuni">
-                    <img src="{% static 'images/yuniHeart.png' %}" alt="">
-                    유니
-                </div>
+            <div class="member" id="kanna">
+                <img src="{% static 'images/kannaHeart.png' %}" alt="">
+                칸나
+            </div>
+            <div class="member" id="yuni">
+                <img src="{% static 'images/yuniHeart.png' %}" alt="">
+                유니
+            </div>
 
             <div class = "split-line">
             </div>
 
+            <div class="member" id="hina">
+                <img src="{% static 'images/hinaHeart.png' %}" alt="">
+                히나
+            </div>
             <div class="member" id="shiro">
                 <img src="{% static 'images/shiroHeart.png' %}" alt="">
                 마시로
@@ -100,10 +109,7 @@
                 타비
             </div>
             
-            <div class="member" id="hina">
-                <img src="{% static 'images/hinaHeart.png' %}" alt="">
-                히나
-            </div> 
+
 
             <div class = "split-line">
             </div>
