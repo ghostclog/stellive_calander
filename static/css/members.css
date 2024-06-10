@@ -43,6 +43,19 @@
     transition: 0.2s ease-in-out;
 }
 
+/*
+#kanna { background-color: hsl(240, 33%, 85%); }
+#yuni { background-color: hsl(271, 66%, 95%); }
+#shiro { background-color: hsl(0, 0%, 60%); } 
+#hina { background-color: hsl(355, 100%, 75%); }
+#lize { background-color: hsl(350, 54%, 60%); }
+#tabi { background-color: hsl(195, 73%, 80%); }
+#shibuki { background-color: hsl(260, 20%, 80%); }
+#rin { background-color: hsl(217, 100%, 80%); }
+#nana { background-color: hsl(347, 62%, 85%); }
+#riko { background-color: hsl(120, 40%, 90%); }
+*/
+
 .member:hover{
     transform: scale(1.2);
 }
