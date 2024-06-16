@@ -43,7 +43,7 @@
     margin-bottom: 30px;
 }
 .wrapper .nav .current-date {
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 800;
     width: 240px;
     height: 40px;
@@ -133,9 +133,12 @@
 
 .selected_day{
     color: white;
-    font-weight: 900;
+    font-weight: 1000;
+    font-size: 19px;
 }
 
 .bangsong_day{
-    font-weight: bold;
+    font-weight: 1000;
+    font-size: 19px;
 }
+
