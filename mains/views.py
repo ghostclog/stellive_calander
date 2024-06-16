@@ -217,7 +217,7 @@ def get_link(url, category):
         url4 = "www.youtube.com/embed/" + url3[0]
     elif pattern2 in url1:  # 단축 유튜브 링크 처리
         url2 = url1.split('youtu.be/')
-        url3 = url2[1].split('?')
+        url3 = url2[1].split('?si=')
         url4 = "www.youtube.com/embed/" + url3[0]
     else:
         return None
@@ -279,7 +279,7 @@ def add_page(request, category):
                     return redirect("/")
                 
                 reply_instance = form.save(commit=False)
-                reply_instance.rplay_link = url
+                reply_instance.replay_link = url
                 reply_instance.save()
                 return redirect("/")
             
