@@ -1,3 +1,4 @@
+/* 수정 할 필요 없는 영역 */
 /*
 고정탭 영역
 */
@@ -10,58 +11,122 @@
     z-index: 3;
     top: 0;
 }
-
 #tap div{
     font-size: 18px ;
 }
-
-#members{
-   position: relative;
-   width: 80%;
-   left: 2%;
-   height: 100%;
-   float: left;
-}
-/*
-모바일 고려시
-1. members의left를 2%에서 더 늘리거나, 환경을 좀 수정해야할뜻
-2. member의 margin-right를 줄여야할뜻
-*/
-
-.member{
+/* 맴버들(기수별) 공통 설정 */
+.members{
     position: relative;
-    color: black;
-    float: left;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
     top: 25px;
+    left: 25px;
     line-height: 30px;
     padding-left: 12px;
     padding-right: 12px;
     margin-right: 23px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgb(214, 214, 214);
-    transition: 0.2s ease-in-out;
+    float: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
 }
-
-/*
-#kanna { background-color: hsl(240, 33%, 85%); }
-#yuni { background-color: hsl(271, 66%, 95%); }
-#shiro { background-color: hsl(0, 0%, 60%); } 
-#hina { background-color: hsl(355, 100%, 75%); }
-#lize { background-color: hsl(350, 54%, 60%); }
-#tabi { background-color: hsl(195, 73%, 80%); }
-#shibuki { background-color: hsl(260, 20%, 80%); }
-#rin { background-color: hsl(217, 100%, 80%); }
-#nana { background-color: hsl(347, 62%, 85%); }
-#riko { background-color: hsl(120, 40%, 90%); }
-*/
-
-.member:hover{
-    transform: scale(1.2);
+/* 드롭 박스 공통 요소*/
+.dropdown-content {
+    list-style-type: none;
+    display: none; /* 초기에는 숨김 */
+    position: absolute; /* .member 요소에 상대적으로 배치 */
+    top: 30px;
+    left: 0;
+    min-width: 80px;
+    z-index: 1;
 }
-
+/*맴버(드롭박스 컨텐츠) 공통 요소*/
+.member{
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: solid 3px;
+}
 .member img{
     display: none;
+}
+
+/* 수정 및 추가 영역*/
+/* 기수 추가시 수정해야하는 영역*/
+#mythic{
+    background: #877edb;
+}
+#universe{
+    background: #7c86df
+}
+#cliche{
+    background: #7c9fdf
+}
+
+#mythic:hover .dropdown-content {
+    display: block;
+}
+#universe:hover .dropdown-content {
+    display: block;
+}
+#cliche:hover .dropdown-content {
+    display: block;
+}
+
+
+/* 맴버들 개인 영역 */
+#kanna {
+    background-color: hsl(240, 33%, 85%); 
+    margin-top: 10px;
+    border-color: #373584;
+}
+#yuni { 
+    background-color: hsl(271, 66%, 95%); 
+    margin-top: 7px;
+    border-color: #b77de4;
+}
+#shiro { 
+    background-color: hsl(0, 0%, 60%); 
+    margin-top: 7px;
+    border-color: #282828;
+} 
+#hina { 
+    background-color: hsl(355, 100%, 75%); 
+    margin-top: 10px;
+    border-color: #e4002b;
+}
+#lize { 
+    background-color: hsl(350, 54%, 60%); 
+    margin-top: 7px;
+    border-color: #971b2e;
+}
+#tabi { 
+    background-color: hsl(195, 73%, 80%); 
+    margin-top: 7px;
+    border-color: #70c5e8;
+}
+#shibuki { 
+    background-color: hsl(260, 20%, 80%); 
+    margin-top: 10px;
+    border-color: #8672A6;
+}
+#rin { 
+    background-color: hsl(217, 100%, 80%); 
+    margin-top: 7px;
+    border-color: #56AAFC;
+}
+#nana { 
+    background-color: hsl(347, 62%, 85%); 
+    margin-top: 7px;
+    border-color: #DF7685;
+}
+#riko { 
+    background-color: hsl(120, 40%, 90%); 
+    margin-top: 7px;
+    border-color: #A6D0A6;
 }
 
 #kanna:hover{
@@ -114,18 +179,4 @@
     background-color:#A6D0A6;
     color: white;
     font-weight: bold;
-}
-
-.split-line {
-    margin-top: 20px;
-    margin-right: 24px;
-    position: relative;
-    height: 40px;
-    float: left;
-    border-right: 1px solid rgb(214, 214, 214);
-    padding: 0px;
-}
-
-#members{
-    list-style-type: none; /* 점 제거 */
 }

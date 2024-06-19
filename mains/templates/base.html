@@ -77,65 +77,69 @@
         <div id="logo">
             <img src="{% static 'images/calendar.jpg' %}" alt="">
         </div>
-        <div id="members">
 
-            <div class="member" id="kanna">
-                <img src="{% static 'images/kannaHeart.png' %}" alt="">
-                칸나
+        <div id="mythic" class="members">
+            미스틱
+            <div id="mythic-dropdown-content" class="dropdown-content"> 
+                <div id="kanna" class="member">
+                    <img src="{% static 'images/kannaHeart.png' %}" alt="">
+                    칸나
+                </div>
+
+                <div class="member" id="yuni">
+                    <img src="{% static 'images/yuniHeart.png' %}" alt="">
+                    유니
+                </div>
             </div>
-            <div class="member" id="yuni">
-                <img src="{% static 'images/yuniHeart.png' %}" alt="">
-                유니
-            </div>
-
-            <div class = "split-line">
-            </div>
-
-            <div class="member" id="hina">
-                <img src="{% static 'images/hinaHeart.png' %}" alt="">
-                히나
-            </div>
-            <div class="member" id="shiro">
-                <img src="{% static 'images/shiroHeart.png' %}" alt="">
-                마시로
-            </div>
-            
-            <div class="member" id="lize">
-                <img src="{% static 'images/lizeHeart.png' %}" alt="">
-                리제
-            </div>
-            <div class="member" id="tabi">
-                <img src="{% static 'images/tabiHeart.png' %}" alt="">
-                타비
-            </div>
-            
-
-
-            <div class = "split-line">
-            </div>
-
-            <div class="member" id="shibuki">
-                <img src="{% static 'images/shibukiHeart.png' %}" alt="">
-                시부키
-            </div> 
-            <div class="member" id="rin">
-                <img src="{% static 'images/rinHeart.png' %}" alt="">
-                린
-            </div> 
-            <div class="member" id="nana">
-                <img src="{% static 'images/nanaHeart.png' %}" alt="">
-                나나
-            </div> 
-            <div class="member" id="riko">
-                <img src="{% static 'images/rikoHeart.png' %}" alt="">
-                리코
-            </div> 
-
-
-
-
-            <script src="{% static 'js/members.js' %}"></script>
         </div>
+
+        <div id="universe" class="members">
+            유니버스
+            <div id="mythic-dropdown-content" class="dropdown-content"> 
+                <div id="hina" class="member" >
+                    <img src="{% static 'images/hinaHeart.png' %}" alt="">
+                    히나
+                </div>
+                <div id="shiro" class="member" >
+                    <img src="{% static 'images/shiroHeart.png' %}" alt="">
+                    마시로
+                </div>
+                
+                <div id="lize" class="member">
+                    <img src="{% static 'images/lizeHeart.png' %}" alt="">
+                    리제
+                </div>
+                <div id="tabi" class="member" >
+                    <img src="{% static 'images/tabiHeart.png' %}" alt="">
+                    타비
+                </div>
+            </div>
+        </div>
+
+        <div id="cliche" class="members">
+            클리셰
+            <div id="mythic-dropdown-content" class="dropdown-content"> 
+                <div class="member" id="shibuki">
+                    <img src="{% static 'images/shibukiHeart.png' %}" alt="">
+                    시부키
+                </div> 
+                <div class="member" id="rin">
+                    <img src="{% static 'images/rinHeart.png' %}" alt="">
+                    린
+                </div>
+                <div class="member" id="nana">
+                    <img src="{% static 'images/nanaHeart.png' %}" alt="">
+                    나나
+                </div> 
+                <div class="member" id="riko">
+                    <img src="{% static 'images/rikoHeart.png' %}" alt="">
+                    리코
+                </div> 
+            </div> 
+        </div>
+        
+        <script src="{% static 'js/members.js' %}"></script>
+        
         <div id="utility">
             <div id="utility-area">
                 <div class="utility-item" id="add-reply">
