@@ -1,0 +1,51 @@
+@media (max-width: 900px) {
+    #data-area{
+        width: 38%;
+    }
+}
+
+@media (max-width: 830px) {
+    #data-area{
+        width: 36%;
+    }
+}
+
+@media (max-width: 790px) {
+    #data-area{
+        width: 34%;
+    }
+}
+
+@media (max-width: 760px) {
+    #data-area{
+        width: 32%;
+    }
+
+    .alert-messages{
+        display: none;
+    }
+}
+
+@media (max-width: 730px) {
+    #data-area{
+        display: none;
+        left: 0;
+    }
+    #utility{
+        display: none;
+    }
+    .wrapper{
+        width: 100%;
+    }
+    body{
+        background-color: white;
+    }
+
+    .members{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    #footer-area div{
+        color: black;
+    }
+}

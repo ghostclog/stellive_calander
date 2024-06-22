@@ -5,70 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="{% static 'css/body.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/body/body.css' %}" rel="stylesheet" type="text/css" />
     <!--바디-->
-
-    <link href="{% static 'css/members.css' %}" rel="stylesheet" type="text/css" />
-    <!--헤더1 맴버들 및 헤덭탭-->
-
-    <link href="{% static 'css/utility.css' %}" rel="stylesheet" type="text/css" />
-    <!--해더2 등록버튼-->
-
-    <link href="{% static 'css/logo.css' %}" rel="stylesheet" type="text/css" />
-    <!--로고-->
-
-    <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/header/tap.css' %}" rel="stylesheet" type="text/css" />
+    <!--헤더-->
+    <link href="{% static 'css/footer/footer.css' %}" rel="stylesheet" type="text/css" />
     <!--푸터-->
 
-    <link href="{% static 'css/calender.css' %}" rel="stylesheet" type="text/css" />
-    <!--캘린더-->
-
-    <link href="{% static 'css/data-area.css' %}" rel="stylesheet" type="text/css" />
-    <!--데이터 보여주는거-->
-
-    <link href="{% static 'css/add.css' %}" rel="stylesheet" type="text/css" />
-    <!--데이터 등록 페이지 공통 사항 css -->
-
-    <link href="{% static 'css/add-clip.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 클립 등록 css -->
-
-    <link href="{% static 'css/add-reply.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 클립 등록 css -->
-
-    <link href="{% static 'css/vedio-area.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 데이터 보기 css -->
-
-    <link href="{% static 'css/request.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 요청사항 css -->
-
-    <link href="{% static 'css/error.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 에러페이지 css -->
+    <link href="{% static 'css/header/member/common.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 기수별 css -->
+    <link href="{% static 'css/header/member/members.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 맴버별 css -->
+    <link href="{% static 'css/header/addBtn.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 클립/다시보기 -->
+    <link href="{% static 'css/header/logo.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 로고 -->
 
     {{ stella|default:"not_select" }}
-
+    <!-- 미선택시 -->
     {% if stella == 'kanna'%}
-        <link href="{% static 'css/focus/kanna.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/kanna.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'yuni'%}
-        <link href="{% static 'css/focus/yuni.css' %}" rel="stylesheet" type="text/css" />
-
+        <link href="{% static 'css/header/focus/yuni.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 미스틱 -->
     {% elif stella == 'shiro'%}
-        <link href="{% static 'css/focus/shiro.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/shiro.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'hina'%}
-        <link href="{% static 'css/focus/hina.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/hina.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'lize'%}
-        <link href="{% static 'css/focus/lize.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/lize.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'tabi'%}
-        <link href="{% static 'css/focus/tabi.css' %}" rel="stylesheet" type="text/css" />
-
+        <link href="{% static 'css/header/focus/tabi.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 유니버스 -->
     {% elif stella == 'shibuki'%}
-        <link href="{% static 'css/focus/shibuki.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/shibuki.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'rin'%}
-        <link href="{% static 'css/focus/rin.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/rin.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'nana'%}
-        <link href="{% static 'css/focus/nana.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/nana.css' %}" rel="stylesheet" type="text/css" />
     {% elif stella == 'riko'%}
-        <link href="{% static 'css/focus/riko.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/header/focus/riko.css' %}" rel="stylesheet" type="text/css" />
     {% endif %}
+    <!-- 클리셰 -->
+    <!-- 선택한 맴버 -->
+
+
+
+
+    <link href="{% static 'css/body/calender.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 캘린더 -->
+    <link href="{% static 'css/body/data-area.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 날짜 정보 -->
+
+    <link href="{% static 'css/addPage/add.css' %}" rel="stylesheet" type="text/css" />
+    <!--데이터 등록 페이지 공통 사항 css -->
+    <link href="{% static 'css/addPage/add-clip.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 클립 등록 페이지 -->
+    <link href="{% static 'css/addPage/add-reply.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 다시보기 등록 페이지 -->
+
+    <link href="{% static 'css/body/vedio-area.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 영상 페이지 css -->
+
+    <link href="{% static 'css/body/request.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 요청사항 css -->
+
+    <link href="{% static 'css/body/error.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 에러페이지 css -->
+
+    <link href="{% static 'css/etc/media-query.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 미디어 쿼리 -->
 
 <title>Stellive BangSong Calender</title>
 </head>
@@ -161,6 +167,9 @@
             </div>
             <div class="footer-item">
                 <a href="/requests">요청사항</a>
+            </div>
+            <div class="footer-item">
+                <a href="/admin">데이터 관리 페이지(editor/stellaedit0r)</a>
             </div>
         </div>
     </div>

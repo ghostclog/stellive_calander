@@ -1,9 +1,11 @@
 #data-area{
-    position: relative;
+    position: absolute;
     width: 40%;
     height: 70%;
     float: left;
     border-left: 2px solid black;
+    right: 5%;
+    top: 83px;
 }
 
 #in-data-area{

@@ -1,0 +1,61 @@
+/* 맴버들(기수별) 공통 설정 */
+.members{
+    position: relative;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    top: 25px;
+    left: 25px;
+    line-height: 30px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 23px;
+    border-radius: 10px;
+    cursor: pointer;
+    float: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+/* 드롭 박스 공통 요소*/
+.dropdown-content {
+    list-style-type: none;
+    display: none; /* 초기에는 숨김 */
+    position: absolute; /* .member 요소에 상대적으로 배치 */
+    top: 30px;
+    left: 0;
+    min-width: 80px;
+    z-index: 1;
+}
+/*맴버(드롭박스 컨텐츠) 공통 요소*/
+.member{
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: solid 3px;
+}
+.member img{
+    display: none;
+}
+
+/* 수정 및 추가 영역*/
+/* 기수 추가시 수정해야하는 영역*/
+#mythic{
+    background: #877edb;
+}
+#universe{
+    background: #7c86df
+}
+#cliche{
+    background: #7c9fdf
+}
+
+#mythic:hover .dropdown-content {
+    display: block;
+}
+#universe:hover .dropdown-content {
+    display: block;
+}
+#cliche:hover .dropdown-content {
+    display: block;
+}

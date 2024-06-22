@@ -7,6 +7,9 @@ let stella = document.querySelector('#stella').value;
 // hidden input에서 방송한 날들에 대한 정보 받기
 let bangsong_days = document.querySelector('#bangsong_day').value;
 
+// hidden input에서 클립이 존재하는 날들에 대한 정보 받기
+let kirinuky_days = document.querySelector('#kirinuky_day').value;
+
 // 가져온 정보로 해당 월의 마지막날 찾기
 let lastDateofMonth = new Date(year,months,0).getDate();
 
@@ -30,15 +33,19 @@ let daysTag = document.querySelector('.days');
 const renderCalendar = () => {
     let li = '';
     let bangsong_list = JSON.parse(bangsong_days);
+    let kirinuky_list = JSON.parse(kirinuky_days);
     for (let i = firstDayofMonth; i > 0; i--) {
         li += `<li class = "inactive daaay before_month">${lastDateofLastMonth - i + 1}</li>`;
     }
 
     for (let i = 1; i <= lastDateofMonth; i++) {
-        if (bangsong_list.includes(i)){
+        if(kirinuky_list.includes(i) && bangsong_list.includes(i)){
+            li += `<li class = "actives daaay bangsong_day clip_day">${i}</li>`;
+        }else if(bangsong_list.includes(i)){
             li += `<li class = "actives daaay bangsong_day">${i}</li>`;
-        }
-        else{
+        }else if(kirinuky_list.includes(i)){
+            li += `<li class = "actives daaay clip_day">${i}</li>`;
+        }else{
             li += `<li class = "actives daaay">${i}</li>`;
         }
 	}

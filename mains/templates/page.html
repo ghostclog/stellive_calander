@@ -40,6 +40,7 @@
             <input type="hidden" id="day" name="day" value = "{{ for_calander_date.2 }}">
             <input type="hidden" id="stella" name="stella" value = "not_select">
             <input type="hidden" id="bangsong_day" name="bangsong_day" value = "[0,0]">
+            <input type="hidden" id="kirinuky_day" name="kirinuky_day" value = "[0,0]">
             <script src="{% static 'js/calander.js' %}"></script>
             <div id="data-area">
                 <div id="how-to-use">
@@ -56,8 +57,12 @@
                         3. 여기서 굵게 표시된 날짜는 방송을 한 날!
                     </div>
                     <br>
-                    <div class="sub">
-                        !!! 몇몇 영상들은 저작권 빔을 맞아서 없습니다. !!!
+                    <div class="sub alert-messages">
+                        !!! 몇몇 영상들은 저작권 때문에 없습니다. !!!
+                    </div>
+                    <br>
+                    <div class="sub alert-messages">
+                        !!! 유투브 설정으로 인해 해당 페이지에서 볼 수 없는 영상이 존재합니다. !!!
                     </div>
                 </div>
             </div>
