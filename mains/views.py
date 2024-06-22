@@ -2,6 +2,20 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 from . import models, forms
 
+stella_dict={
+    'kanna':'아이리 칸나',
+    'yuni':'아야츠노 유니',
+    'hina':'시라유키 히나',
+    'shiro':'네네코 마시로',
+    'lize':'아카네 리제',
+    'tabi':'아라하시 타비',
+    'shibuki':'텐코 시부키',
+    'rin':'아오쿠모 린',
+    'nana':'하나코 나나',
+    'riko':'유즈하 리코'
+}
+
+
 # 메인 페이지 1 (스텔라 선택 전)
 def main_page(request):
     """
@@ -64,6 +78,12 @@ def stella_date_page(request, stella, date):
             replay_day__month=month
         ).values_list('replay_day__day', flat=True))  # 방송 날짜 목록
 
+        kirinuky_day = list(models.kirinuky.objects.filter(
+            kirinuky_stella__contains = stella_dict[stella],
+            kirinuky_day__year=year,
+            kirinuky_day__month=month
+        ).values_list('kirinuky_day__day', flat=True))
+
         return render(request, "members.html", {
             'stella': stella,
             'string_date': formatted_date,
@@ -72,7 +92,8 @@ def stella_date_page(request, stella, date):
             'contents': "아직 날짜가 설정되지 않았습니다.",        # 방송 내용 (초기값)
             'clips': "아직 날짜가 설정되지 않았습니다.",          # 클립 개수 (초기값)
             'for_calander_date': [year, month, 0],                  # 캘린더 표시 날짜
-            'bangsong_day': bangsong_day                            # 방송 날짜 목록
+            'bangsong_day': bangsong_day,                           # 방송 날짜 목록
+            'kirinuky_day' : kirinuky_day
         })
 
 # 메인 페이지 4 (스텔라, 연월, 일자 선택, 상세 정보)
@@ -89,6 +110,10 @@ def stella_detail_page(request, stella, date, day):
     """
 
     if request.method == "GET":
+        # 스텔라 정보가 없는 경우
+        if(stella == "not_select"):
+            return redirect("/")
+        
 
         # 일자를 잘못 입력 한 경우.
         if(int(day) > 31 or int(day) < 1):
@@ -122,6 +147,12 @@ def stella_detail_page(request, stella, date, day):
             stella = stella_name, 
             replay_day__year = year, 
             replay_day__month = month).values_list('replay_day__day', flat=True))
+        
+        kirinuky_day = list(models.kirinuky.objects.filter(
+            kirinuky_stella__contains = stella_dict[stella],
+            kirinuky_day__year=year,
+            kirinuky_day__month=month
+        ).values_list('kirinuky_day__day', flat=True))
 
         #방송 데이터 가져오기(에러 발생시, 해당 날짜에는 방송을 하지 않거나, 다시보기가 올라오지 않음.)
         bangsong_data_list = models.Replay.objects.filter(
@@ -130,6 +161,8 @@ def stella_detail_page(request, stella, date, day):
             replay_day__month = month, 
             replay_day__day = day
         )
+
+
 
         # 리스트에 결과가 있을 때 처리
         if bangsong_data_list.exists():
@@ -149,7 +182,8 @@ def stella_detail_page(request, stella, date, day):
                             'contents' : contents,
                             'clips' : str(kirinuky_data) + "개",
                             'for_calander_date':[year,month,day],
-                            'bangsong_day' : bangsong_day})
+                            'bangsong_day' : bangsong_day,
+                            'kirinuky_day' : kirinuky_day})
     
 ####################################################################################################################################################################################################################
     

@@ -19,13 +19,16 @@ class Replay(models.Model):
     replay_day = models.DateField()                                 # 다시보기 날짜
     replay_contents = models.CharField(max_length=100)              # 다시보기 내용
 
+    def __str__(self):  # 관리자 페이지용
+        return f"{self.stella} : {self.replay_day} - {self.replay_contents}"
+
 class kirinuky(models.Model):
     kirinuky_stella = models.CharField(max_length=30)   # 스텔라들. string 형태
     kirinuky_link = models.CharField(max_length=300)    # 클립 링크
     kirinuky_title = models.CharField(max_length=50)    # 클립명
     kirinuky_day = models.DateField(null=True)          # 클립 원본 날짜
 
-    def __str__(self):  # 스텔라 이름 반환
+    def __str__(self):  # 관리자 페이지용
         return self.kirinuky_title
 
 class requests(models.Model):
