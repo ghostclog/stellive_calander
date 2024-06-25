@@ -157,6 +157,17 @@ const daySelect = () => {
     }
 }
 
+//모바일 환경에서 메인 페이지 진입시 일부 요소 보이지 않게하기.
+document.addEventListener("DOMContentLoaded", function() {
+    const dataAreaElement = document.getElementById("data-area");
+    const windowWidth = window.innerWidth;
+  
+    if (stella == "not_select" && windowWidth <= 730) {
+      dataAreaElement.style.display = "none";
+      alert("맴버를 선택하신 후, 날짜를 선택해주세요.");
+    }
+});
+
 ////////////////// 이벤트 호출 및 등록하는 부분 /////////////////
 renderCalendar();
 selectedDay();

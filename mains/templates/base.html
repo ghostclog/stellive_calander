@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="icon" href="{% static 'images/calendar.jpg' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,6 +21,30 @@
     <!-- 클립/다시보기 -->
     <link href="{% static 'css/header/logo.css' %}" rel="stylesheet" type="text/css" />
     <!-- 로고 -->
+
+    <link href="{% static 'css/body/calender.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 캘린더 -->
+    <link href="{% static 'css/body/data-area.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 날짜 정보 -->
+
+    <link href="{% static 'css/addPage/add.css' %}" rel="stylesheet" type="text/css" />
+    <!--데이터 등록 페이지 공통 사항 css -->
+    <link href="{% static 'css/addPage/add-clip.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 클립 등록 페이지 -->
+    <link href="{% static 'css/addPage/add-reply.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 다시보기 등록 페이지 -->
+
+    <link href="{% static 'css/body/vedio-area.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 영상 페이지 css -->
+
+    <link href="{% static 'css/body/request.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 요청사항 css -->
+
+    <link href="{% static 'css/body/error.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 에러페이지 css -->
+
+    <link href="{% static 'css/etc/media-query.css' %}" rel="stylesheet" type="text/css" />
+    <!-- 미디어 쿼리 -->
 
     {{ stella|default:"not_select" }}
     <!-- 미선택시 -->
@@ -52,29 +77,6 @@
 
 
 
-    <link href="{% static 'css/body/calender.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 캘린더 -->
-    <link href="{% static 'css/body/data-area.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 날짜 정보 -->
-
-    <link href="{% static 'css/addPage/add.css' %}" rel="stylesheet" type="text/css" />
-    <!--데이터 등록 페이지 공통 사항 css -->
-    <link href="{% static 'css/addPage/add-clip.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 클립 등록 페이지 -->
-    <link href="{% static 'css/addPage/add-reply.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 다시보기 등록 페이지 -->
-
-    <link href="{% static 'css/body/vedio-area.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 영상 페이지 css -->
-
-    <link href="{% static 'css/body/request.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 요청사항 css -->
-
-    <link href="{% static 'css/body/error.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 에러페이지 css -->
-
-    <link href="{% static 'css/etc/media-query.css' %}" rel="stylesheet" type="text/css" />
-    <!-- 미디어 쿼리 -->
 
 <title>Stellive BangSong Calender</title>
 </head>
@@ -168,7 +170,7 @@
             <div class="footer-item">
                 <a href="/requests">요청사항</a>
             </div>
-            <div class="footer-item">
+            <div class="footer-item" id="admin-div">
                 <a href="/admin">데이터 관리 페이지(editor/stellaedit0r)</a>
             </div>
         </div>

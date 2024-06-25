@@ -27,25 +27,89 @@
 }
 
 @media (max-width: 730px) {
-    #data-area{
-        display: none;
-        left: 0;
+    #contents-area{
+        top: 40px;
     }
+    .calendar{
+        border-bottom: 2px solid black;
+        width: auto;
+    }
+    #data-area{
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        border-left: 0px;
+        right: 5%;
+        top: -25px;
+    }
+    .footer-item{
+        margin-left: 200px;
+        padding-bottom: 50px;
+    }
+    #data-clips-div{
+        display: none;
+    }
+    #data-clips{
+        display: none;
+    }
+
+
+    #footer-area{
+        top: -40px;
+    }
+
     #utility{
         display: none;
-    }
-    .wrapper{
-        width: 100%;
     }
     body{
         background-color: white;
     }
-
     .members{
         padding-left: 6px;
         padding-right: 6px;
     }
     #footer-area div{
         color: black;
+    }
+    .wrapper{
+        place-items: start;
+        padding-top: 0px;
+    }
+    #copyright{
+        display: none;
+    }
+    #admin-div{
+        display: none;
+    }
+    .weeks{
+        padding: 0;
+    }
+    .days{
+        padding: 0;
+    }
+    #beforeMonthArrow{
+        padding: 0;
+        margin: 0;
+    }
+    #afterMonthArrow{
+        padding: 0;
+        margin: 0;
+    }
+    .wrapper .nav button{
+        padding: 0;
+        margin: 0;
+    }
+
+    .members{
+        margin-right: 10px;
+        left: 15px;
+    }
+    #tap div {
+        font-size: 16px;
+        
+    }
+    #logo{
+        display: none;
     }
 }
