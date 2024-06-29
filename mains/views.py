@@ -64,12 +64,12 @@ def stella_date_page(request, stella, date):
         date (str): 선택된 연월 (YYYYMM 형식)
     """
     if request.method == "GET":
-        year = int(date[0:4])
-        month = int(date[4:])
         try:
+            year = int(date[0:4])
+            month = int(date[4:])
             formatted_date = datetime(year, month, 1).strftime('%B %Y')  # 월(영문) 연도 형식
             stella_name = models.Stellas.objects.get(stella_name_code=stella)  # 스텔라 객체 조회
-        except models.Stellas.DoesNotExist:  # 스텔라가 존재하지 않을 경우
+        except:  # 잘못된 주소로 접근하는 경우
             return redirect("/errorpage")
 
         bangsong_day = list(models.Replay.objects.filter(
@@ -114,17 +114,20 @@ def stella_detail_page(request, stella, date, day):
         if(stella == "not_select"):
             return redirect("/")
         
+        try:
+            # 일자를 잘못 입력 한 경우.
+            if(int(day) > 31 or int(day) < 1):
+                request.session['error_message'] = '일자 입력이 잘못되었습니다.'
+                return redirect("/mains/"+stella+"/"+date)
 
-        # 일자를 잘못 입력 한 경우.
-        if(int(day) > 31 or int(day) < 1):
-            request.session['error_message'] = '일자 입력이 잘못되었습니다.'
-            return redirect("/mains/"+stella+"/"+date)
+            # 날짜 정보
+            year = int(date[0:4])
+            month = int(date[4:])
+            date_data = str(year) + " / " + str(month).zfill(2) +" / " + str(day).zfill(2)
+        except:
+            return redirect("/errorpage")
 
-        # 날짜 정보
-        year = int(date[0:4])
-        month = int(date[4:])
-        date_data = str(year) + " / " + str(month).zfill(2) +" / " + str(day).zfill(2)
-        
+
         # 변수 초기화
         contents = ""
 
@@ -290,23 +293,37 @@ def add_page(request, category):
     # POST 요청: 데이터 등록
     if request.method == "POST":
 
+        #클립(키리누키)
         if category == "clip":
+            # 체크박스로 선택한 스텔라들 이름 목록 가져오기
             stellas = request.POST.getlist('stellas')
+            # XSS 공격 대비용 코드들. 만약 스텔라 이름을 XSS를 통해 DB에 잘못 넣을 경우를 대비함
+            # 위에 사전에 정의해준 stella_dict에 매칭되는 키값이 없는 경우 에러 페이지로 이동
+            if all(stella in stella_dict for stella in stellas):
+                pass
+            else:
+                return redirect("/errorpage")
+            # 이름에 이상이 없는 경우, 이름을 리스트화
             stella_list = ", ".join(stellas)
             form = forms.clip_regist_form(request.POST)
             if form.is_valid():
                 url = get_link(form.cleaned_data['kirinuky_link'], category)  # 링크 추출 및 중복 확인
                 if url is None:  # 이미 존재하는 링크 처리
                     return redirect("/")
-                
                 clip_instance = form.save(commit=False)
                 clip_instance.kirinuky_stella = stella_list
                 clip_instance.kirinuky_link = url
                 clip_instance.save()
                 return redirect("/")
 
+        # 다시보기
         if category == "reply":
-            form = forms.reply_regist_form(request.POST)
+            form = forms.reply_regist_form()
+            # 스텔라 값에 대한 XSS 공격 대비
+            if(request.POST.get('stella') in stella_dict):
+                pass
+            else:
+                return redirect("/errorpage")
             if form.is_valid():
                 url = get_link(form.cleaned_data['replay_link'], category)  # 링크 추출 및 중복 확인
                 if url is None:  # 이미 존재하는 링크 처리

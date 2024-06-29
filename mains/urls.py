@@ -12,7 +12,7 @@ urlpatterns = [
     path('requests', views.requests),  # 요청사항
     path('feedback', views.stella_detail_page),  # 피드백
     
-    path('errorpage', views.error_page),  # 피드백
+    path('errorpage', views.error_page),  # 에러페이지
 ]
 
 handler404 = 'mains.views.custom_page_not_found_view'
