@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from datetime import datetime
 from . import models, forms
 
@@ -299,7 +300,7 @@ def add_page(request, category):
             stellas = request.POST.getlist('stellas')
             # XSS 공격 대비용 코드들. 만약 스텔라 이름을 XSS를 통해 DB에 잘못 넣을 경우를 대비함
             # 위에 사전에 정의해준 stella_dict에 매칭되는 키값이 없는 경우 에러 페이지로 이동
-            if all(stella in stella_dict for stella in stellas):
+            if all(stella in stella_dict.values() for stella in stellas):
                 pass
             else:
                 return redirect("/errorpage")
@@ -318,21 +319,21 @@ def add_page(request, category):
 
         # 다시보기
         if category == "reply":
-            form = forms.reply_regist_form()
+            stella = request.POST.get('stella')
             # 스텔라 값에 대한 XSS 공격 대비
-            if(request.POST.get('stella') in stella_dict):
-                pass
+            if stella and stella in stella_dict.values():
+                form = forms.reply_regist_form(request.POST)
+                if form.is_valid():
+                    url = get_link(form.cleaned_data['replay_link'], category)  # 링크 추출 및 중복 확인
+                    if url is None:  # 이미 존재하는 링크 처리
+                        return redirect("/")
+                    reply_instance = form.save(commit=False)
+                    reply_instance.replay_link = url
+                    reply_instance.save()
+                    return redirect("/")
             else:
                 return redirect("/errorpage")
-            if form.is_valid():
-                url = get_link(form.cleaned_data['replay_link'], category)  # 링크 추출 및 중복 확인
-                if url is None:  # 이미 존재하는 링크 처리
-                    return redirect("/")
-                
-                reply_instance = form.save(commit=False)
-                reply_instance.replay_link = url
-                reply_instance.save()
-                return redirect("/")
+
             
 ####################################################################################################################################################################################################################
 
