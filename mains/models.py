@@ -23,7 +23,7 @@ class Replay(models.Model):
         return f"{self.stella} : {self.replay_day} - {self.replay_contents}"
 
 class kirinuky(models.Model):
-    kirinuky_stella = models.CharField(max_length=30)   # 스텔라들. string 형태
+    kirinuky_stella = models.CharField(max_length=100)   # 스텔라들. string 형태
     kirinuky_link = models.CharField(max_length=300)    # 클립 링크
     kirinuky_title = models.CharField(max_length=50)    # 클립명
     kirinuky_day = models.DateField(null=True)          # 클립 원본 날짜
