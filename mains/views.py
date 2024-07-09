@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
 from datetime import datetime
 from . import models, forms
+
 
 stella_dict={
     'kanna':'아이리 칸나',
@@ -80,11 +80,11 @@ def stella_date_page(request, stella, date):
         ).values_list('replay_day__day', flat=True))  # 방송 날짜 목록
 
         kirinuky_day = list(models.kirinuky.objects.filter(
-            kirinuky_stella__contains = stella_dict[stella],
+            kirinuky_stella__icontains = stella_dict[stella],
             kirinuky_day__year=year,
             kirinuky_day__month=month
         ).values_list('kirinuky_day__day', flat=True))
-
+    
         return render(request, "members.html", {
             'stella': stella,
             'string_date': formatted_date,
@@ -153,7 +153,7 @@ def stella_detail_page(request, stella, date, day):
             replay_day__month = month).values_list('replay_day__day', flat=True))
         
         kirinuky_day = list(models.kirinuky.objects.filter(
-            kirinuky_stella__contains = stella_dict[stella],
+            kirinuky_stella__icontains = stella_dict[stella],
             kirinuky_day__year=year,
             kirinuky_day__month=month
         ).values_list('kirinuky_day__day', flat=True))
