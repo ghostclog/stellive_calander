@@ -119,11 +119,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static/",
-]
-
+# settings.py 예시
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # static 파일을 수집할 디렉토리
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # 앱별 static 파일 디렉토리
+]
 
 
 # Default primary key field type
@@ -131,4 +132,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEBUG = False
+DEBUG = True
