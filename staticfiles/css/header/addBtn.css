@@ -1,0 +1,33 @@
+#utility{
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    float: left;
+    right: 0px;
+}
+
+#utility-area{
+    position: absolute;
+    right: 0;
+    width: 300px;
+}
+
+.utility-item{
+    position: relative;
+    float: left;
+    top: 25px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 21px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #7c86df;
+    color: white;
+    transition: 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+.utility-item:hover{
+    transform: scale(1.1);
+}

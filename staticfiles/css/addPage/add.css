@@ -1,0 +1,27 @@
+#form-area{
+    position: relative;
+    top: 10%;
+    left: 30%;
+    width: 60%;
+    height: 80%;
+}
+
+.regist{
+    background-color: #7c86df;
+    border: #7079c9 2px solid;
+    padding: 10px;
+    border-radius: 12px;
+    transition: 0.2s ease-in-out;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    position: relative;
+}
+
+.regist:hover{
+    transform: scale(1.2);
+}
+
+.regist:active{
+    background-color: #5e66ad;
+}

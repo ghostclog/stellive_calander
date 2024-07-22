@@ -1,0 +1,79 @@
+.reply_input_area{
+    
+    width: 70%;
+    height: 100px;
+}
+
+#stella_name_text{
+    position: relative;
+    left: 0px;
+    float: left;
+    margin: 0;
+    margin-right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#id_stella{
+    position: relative;
+    left: 10px;
+    width: 250px;
+    border-radius: 7px;
+    border: 2px solid;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 550;
+}
+
+#id_replay_link{
+    position: relative;
+    width: 60%;
+    height: 21px;
+    border-radius: 8px;
+    border: 2px solid;
+    
+}
+
+#data-input-area{
+    width: 80%;
+    position: relative;
+}
+
+#data-input-area div{
+    font-size: 26px;
+}
+
+#id_replay_day{
+    position: relative;
+    height: 21px;
+    border-radius: 7px;
+    border: 2px solid;
+}
+
+#id_kirinuky_day{
+    position: relative;
+    height: 21px;
+    border-radius: 7px;
+    border: 2px solid;
+    font-size: 18px;
+    top: -25px;
+}
+
+#div1{
+    position: relative;
+    top: -50px;
+}
+
+#div2{
+    position: relative;
+    top: -100px;
+}
+
+#id_replay_contents{
+    position: relative;
+    top: 5px;
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    border: 2px solid;
+}

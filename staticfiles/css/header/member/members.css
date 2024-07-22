@@ -1,0 +1,102 @@
+#kanna {
+    background-color: hsl(240, 33%, 60%); 
+    margin-top: 17px;
+    border-color: #373584;
+}
+#yuni { 
+    background-color: hsl(271, 66%, 78%); 
+    margin-top: 12px;
+    border-color: #b77de4;
+}
+#shiro { 
+    background-color: hsl(0, 0%, 60%); 
+    margin-top: 12px;
+    border-color: #282828;
+} 
+#hina { 
+    background-color: hsl(355, 100%, 75%); 
+    margin-top: 17px;
+    border-color: #e4002b;
+}
+#lize { 
+    background-color: hsl(350, 54%, 60%); 
+    margin-top: 12px;
+    border-color: #971b2e;
+}
+#tabi { 
+    background-color: hsl(195, 73%, 75%); 
+    margin-top: 12px;
+    border-color: #70c5e8;
+}
+#shibuki { 
+    background-color: hsl(260, 20%, 80%); 
+    margin-top: 17px;
+    border-color: #8672A6;
+}
+#rin { 
+    background-color: hsl(217, 100%, 80%); 
+    margin-top: 12px;
+    border-color: #56AAFC;
+}
+#nana { 
+    background-color: hsl(347, 62%, 80%); 
+    margin-top: 12px;
+    border-color: #DF7685;
+}
+#riko { 
+    background-color: hsl(120, 40%, 80%); 
+    margin-top: 12px;
+    border-color: #A6D0A6;
+}
+
+#kanna:hover{
+    background-color:#373584;
+    color: white;
+    font-weight: bold;
+}
+#yuni:hover{
+    background-color:#b77de4;
+    color: white;
+    font-weight: bold;
+}
+#shiro:hover{
+    background-color:#282828;
+    color: white;
+    font-weight: bold;
+}
+#hina:hover{
+    background-color:#e4002b;
+    color: white;
+    font-weight: bold;
+}
+#lize:hover{
+    background-color: #971b2e;
+    color: white;
+    font-weight: bold;
+}
+#tabi:hover{
+    background-color:#70c5e8;
+    color: white;
+    font-weight: bold;
+}
+
+#shibuki:hover{
+    background-color:#8672A6;
+    color: white;
+    font-weight: bold;
+}
+#rin:hover{
+    background-color: #56AAFC;
+    color: white;
+    font-weight: bold;
+}
+#nana:hover{
+    background-color: #DF7685;
+    color: white;
+    font-weight: bold;
+}
+#riko:hover{
+    background-color:#A6D0A6;
+    color: white;
+    font-weight: bold;
+}
