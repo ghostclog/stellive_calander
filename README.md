@@ -9,15 +9,18 @@ The site is designed to allow you to see the replay and Kirinuki (broadcast clip
 
 ## 프로잭트를 시작 한 이유(why to start this project)
 시간이 흘러, 스텔라이브의 팬층 규모가 커짐에 따러서 맴버들의 방송 클립(키리누키)를 만드는 사람들의 수 또한 늘어남에 따라서 특정 날짜에 진행한 방송의 엑기스라 볼 수 있는 키리누키를 찾아보는 것도. 그리고, 지금 보고있는 키리누키의 원본 방송 영상도 찾아보기 점점 힘들어졌습니다. 이에 저는 특정 날짜에 대한 클립과 다시보기를 한 페이지에서 볼 수 있는 페이지의 필요성을 느끼게 되었고, 23년도 12월 말부터 24년도 1월까지. 대략 5주의 기간에 걸친 프로잭트를 시작하게되었습니다.
+
 As time went by, as the number of people making the broadcast clips of the members of Stell Live increased, so did looking for kirinuki, which is an extract from a specific date. Also, it became increasingly difficult to find the original video of kirinuki being watched. This made me feel the need for a single page of clips and replay on a specific date, and I started the project from the end of December 23rd to January 24th, which lasted approximately five weeks.
 
 ## 프로잭트 개발 환경(Project Development Environment)
 - django(python)
 - sqlite(db)
-- pure JS
+- JS
 
-## 개발 기간(development period)
-2023.12.25 ~ 2024.01.26
+## 개발 및 업데이트 기간(development and update period)
+1차: 2023.12.25 ~ 2024.01.26(기본 개발 및 배포)
+2차: 2024.04.26 ~ 2024.07.06(디자인 수정 및 버그 픽스)
+3차: 예정(재배포 및 반 자동화 업데이트)
 
 ## 주요 기능들(main function)
 - 다시보기 및 키리누키 링크 추가(Add replay and keirinuki links):'add/<str:category>'
